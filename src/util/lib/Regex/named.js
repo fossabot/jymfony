@@ -62,7 +62,9 @@ if (! __jymfony.Platform.hasModernRegex()) {
         }
     };
 
-    global.RegExp = function RegExp (pattern, flags = undefined) {
-        return new regexpClass(pattern, flags);
-    };
+    global.RegExp = new Proxy(regexpClass, {
+        apply(target, thisArg, argArray) {
+            return new target(...argArray);
+        },
+    });
 }
