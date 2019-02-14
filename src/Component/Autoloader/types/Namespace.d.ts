@@ -3,7 +3,7 @@ declare namespace Jymfony.Component.Autoloader {
         /**
          * Constructor.
          */
-        constructor(autoloader: Jymfony.Component.Autoloader.Autoloader, fqn: string, baseDirs?: string|string[], req?: NodeRequire);
+        constructor(autoloader: Autoloader, fqn: string, baseDirs?: string|string[], req?: NodeRequire);
 
         /**
          * Add a base directory to search classes in
@@ -12,7 +12,7 @@ declare namespace Jymfony.Component.Autoloader {
          *
          * @returns {Jymfony.Component.Autoloader.Namespace}
          */
-        addDirectory(directory: string): Jymfony.Component.Autoloader.Namespace;
+        addDirectory(directory: string): Namespace;
 
         /**
          * Get the namespace FQN

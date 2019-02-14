@@ -3,7 +3,7 @@ declare namespace Jymfony.Component.Autoloader {
         /**
          * Constructor.
          */
-        constructor(finder: Jymfony.Component.Autoloader.Finder, path: any, vm: any);
-        load(fn: string, self: Jymfony.Component.Autoloader.ClassLoader): any;
+        constructor(finder: Finder, path: any, vm: any);
+        load(fn: string, self: ClassLoader): any;
     }
 }

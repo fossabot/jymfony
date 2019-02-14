@@ -9,12 +9,12 @@ declare namespace Jymfony.Component.Autoloader {
          */
         public debug: boolean;
 
-        public readonly finder: Jymfony.Component.Autoloader.Finder;
+        public readonly finder: Finder;
 
         /**
          * Constructor.
          */
-        constructor(finder?: Jymfony.Component.Autoloader.Finder, globalObject?: NodeJS.Global);
+        constructor(finder?: Finder, globalObject?: NodeJS.Global);
 
         /**
          * Scans package.json of the project and root dependencies
@@ -25,7 +25,7 @@ declare namespace Jymfony.Component.Autoloader {
         private _processPackageInfo(packageInfo: any, baseDir: string): void;
         private _processNamespaces(config: any, baseDir: string): void;
         private _processIncludes(config: any, baseDir: string): void;
-        private _ensureNamespace(namespace: string, parent: any): Jymfony.Component.Autoloader.Namespace;
+        private _ensureNamespace(namespace: string, parent: any): Namespace;
         private _generateFqn(parent: any, namespace: string): string;
     }
 }

@@ -1,4 +1,7 @@
 declare namespace Jymfony.Component.Cache {
+    import DateTime = Jymfony.Component.DateTime.DateTime;
+    import TimeSpan = Jymfony.Component.DateTime.TimeSpan;
+
     export class CacheItem<T> extends implementationOf(CacheItemInterface) implements CacheItemInterface<T> {
         private _key?: string;
         private _value?: T;
@@ -30,12 +33,12 @@ declare namespace Jymfony.Component.Cache {
         /**
          * @inheritdoc
          */
-        expiresAt(expiration: null|undefined|Jymfony.Component.DateTime.DateTime): CacheItem<T>;
+        expiresAt(expiration: null|undefined|DateTime): CacheItem<T>;
 
         /**
          * @inheritdoc
          */
-        expiresAfter(time: null|undefined|Jymfony.Component.DateTime.TimeSpan|number): CacheItem<T>;
+        expiresAfter(time: null|undefined|TimeSpan|number): CacheItem<T>;
 
         /**
          * Adds a tag to a cache item.
