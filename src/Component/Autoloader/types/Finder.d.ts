@@ -1,5 +1,10 @@
 declare namespace Jymfony.Component.Autoloader {
     export class Finder {
+        private _require: NodeRequire;
+        private _fs: any;
+        private _path: any;
+        private _root: string;
+
         /**
          * Constructor.
          */

@@ -8,8 +8,12 @@ declare namespace Jymfony.Component.Autoloader {
          * @returns {boolean}
          */
         public debug: boolean;
-
         public readonly finder: Finder;
+
+        private _debug: boolean;
+        private _registered: boolean;
+        private _finder: Finder;
+        private _global: any;
 
         /**
          * Constructor.

@@ -3,11 +3,24 @@ interface Newable<T> {
 }
 
 declare namespace Jymfony.Component.DependencyInjection {
+    import Compiler = Jymfony.Component.DependencyInjection.Compiler.Compiler;
     import CompilerPassInterface = Jymfony.Component.DependencyInjection.Compiler.CompilerPassInterface;
+    import InstantiatorInterface = Jymfony.Component.DependencyInjection.LazyProxy.InstantiatorInterface;
+    import ParameterBag = Jymfony.Component.DependencyInjection.ParameterBag.ParameterBag;
+    import ExtensionInterface = Jymfony.Component.DependencyInjection.Extension.ExtensionInterface;
     type ServiceIdentifier = string|symbol|Newable<any>;
 
     class ContainerBuilder extends Container {
+        private _extensions: Record<string, ExtensionInterface>;
+        private _extensionConfigs: Record<string, Record<string, any>[]>;
+        private _definitions: Record<string, Definition>;
+        private _aliasDefinitions: Record<string, Alias>;
+        private _resources: ResourceInterface[];
+        private _trackResources: boolean;
+        private _compiler: Compiler;
+
         constructor(parameterBag: ParameterBag);
+        __construct(parameterBag: ParameterBag);
 
         /**
          * Sets the track resources flag.
@@ -246,210 +259,48 @@ declare namespace Jymfony.Component.DependencyInjection {
          * Gets a service definition by id or alias.
          * The method "unaliases" recursively to return a Definition instance.
          *
-         * @param {string} id
-         *
-         * @returns {Jymfony.Component.DependencyInjection.Definition} A Definition instance
-         *
          * @throws {Jymfony.Component.DependencyInjection.Exception.ServiceNotFoundException} If the service definition does not exist
          */
-        findDefinition(id) {
-            id = Container.normalizeId(id);
-
-            while (this._aliasDefinitions[id]) {
-                id = this._aliasDefinitions[id].toString();
-            }
-
-            return this.getDefinition(id);
-        }
+        findDefinition(id: ServiceIdentifier): Definition;
 
         /**
          * Creates a service for a service definition.
          *
-         * @param {Jymfony.Component.DependencyInjection.Definition} definition
-         * @param {undefined|string} id
-         * @param {boolean} [tryProxy = true]
-         *
-         * @returns {*} The service described by the service definition
-         *
          * @throws {Jymfony.Component.DependencyInjection.Exception.RuntimeException} When the factory definition is incomplete or when the service is a synthetic service
          * @throws {Jymfony.Component.DependencyInjection.Exception.InvalidArgumentException} When configure callable is not callable
          */
-        _createService(definition, id, tryProxy = true) {
-            if (definition.isSynthetic()) {
-                throw new RuntimeException('You have requested a synthetic service ("' + id + '"). The DIC does not know how to construct this service.');
-            }
-
-            if (definition.isDeprecated()) {
-                __jymfony.trigger_deprecated(definition.getDeprecationMessage(id));
-            }
-
-            if (tryProxy && definition.isLazy()) {
-                const proxy = this._getProxyInstantiator()
-                    .instantiateProxy(this, definition, id, () => this._createService(definition, id, false));
-
-                this._shareService(definition, proxy, id);
-                return proxy;
-            }
-
-            const parameterBag = this.parameterBag;
-
-            const args = this._resolveServices(parameterBag.unescapeValue(parameterBag.resolveValue(definition.getArguments())));
-            let factory = definition.getFactory();
-            const module = definition.getModule();
-
-            let service;
-
-            if (module) {
-                const [m, property] = module;
-
-                service = require(m);
-                if (undefined !== property) {
-                    service = new service[property](...args);
-                }
-            } else if (factory) {
-                if (isArray(factory)) {
-                    factory = getCallableFromArray([this._resolveServices(parameterBag.resolveValue(factory[0])), factory[1]]);
-                } else if (!isFunction(factory)) {
-                    throw new RuntimeException('Cannot create service "' + id + '" because of invalid factory');
-                }
-
-                service = factory(...args);
-            } else {
-                const class_ = parameterBag.resolveValue(definition.getClass());
-                const constructor = ReflectionClass.getClass(class_ || id);
-
-                service = new constructor(...args);
-            }
-
-            if (tryProxy || !definition.isLazy()) {
-                this._shareService(definition, service, id);
-            }
-
-            const properties = this._resolveServices(parameterBag.unescapeValue(parameterBag.resolveValue(definition.getProperties())));
-            for (const [name, value] of __jymfony.getEntries(properties)) {
-                service[name] = value;
-            }
-
-            for (const call of definition.getMethodCalls()) {
-                this._callMethod(service, call);
-            }
-
-            let configurator = definition.getConfigurator();
-            if (configurator) {
-                if (isArray(configurator)) {
-                    configurator[0] = parameterBag.resolveValue(configurator[0]);
-
-                    if (configurator[0] instanceof Reference) {
-                        configurator[0] = this.get(configurator[0].toString(), configurator[0].invalidBehavior);
-                    } else if (configurator[0] instanceof Definition) {
-                        configurator[0] = this._createService(configurator[0], undefined);
-                    }
-
-                    configurator = getCallableFromArray(configurator);
-                }
-
-                if (!isFunction(configurator)) {
-                    throw new InvalidArgumentException('The configure callable for class "' + service.constructor.name + '" is not a callable.');
-                }
-
-                configurator(service);
-            }
-
-            for (const call of definition.getShutdownCalls()) {
-                this.registerShutdownCall(this._getFunctionCall(service, call));
-            }
-
-            return service;
-        }
+        _createService(definition: Definition, id: undefined|string, tryProxy?: boolean): any;
 
         /**
          * Returns service ids for a given tag.
          *
-         * @param {string} name
-         *
          * @returns {Object.<string, Object>}
          */
-        findTaggedServiceIds(name) {
-            const tags = {};
-
-            for (const [id, definition] of __jymfony.getEntries(this._definitions)) {
-                if (definition.hasTag(name)) {
-                    tags[id] = definition.getTag(name);
-                }
-            }
-
-            return tags;
-        }
+        findTaggedServiceIds(name: string): Record<string, any>;
 
         /**
          * Returns all the defined tags.
          *
          * @returns {string[]}
          */
-        findTags() {
-            const tags = new Set();
-            for (const definition of this._definitions) {
-                for (const tag of Object.keys(definition.getTags())) {
-                    tags.add(tag);
-                }
-            }
-
-            return Array.from(tags);
-        }
+        findTags(): string[];
 
         /**
-         * @param {Jymfony.Component.DependencyInjection.Compiler.CompilerPassInterface} pass
-         * @param {string} message
-         *
          * @final
          */
-        log(pass, message) {
-            this.getCompiler().log(pass, message);
-        }
+        log(pass: CompilerPassInterface, message: string): void;
 
         /**
          * Returns the service conditionals.
-         *
-         * @param {*} value
-         *
-         * @returns {Array}
          */
-        static getServiceConditionals(value) {
-            const services = new Set();
-
-            if (isArray(value)) {
-                for (const v of value) {
-                    __self.getServiceConditionals(v).forEach(service => services.add(service));
-                }
-            } else if (value instanceof Reference && value.invalidBehavior === Container.IGNORE_ON_INVALID_REFERENCE) {
-                services.add(value.toString());
-            }
-
-            return Array.from(services);
-        }
+        static getServiceConditionals(value: any): any[];
 
         /**
          * Returns the initialized conditionals.
          *
-         * @param {*} value
-         *
-         * @returns {Array}
-         *
          * @internal
          */
-        static getInitializedConditionals(value) {
-            const services = new Set();
-
-            if (isArray(value)) {
-                for (const v of value) {
-                    __self.getInitializedConditionals(v).forEach(service => services.add(service));
-                }
-            } else if (value instanceof Reference && Container.IGNORE_ON_UNINITIALIZED_REFERENCE === value.invalidBehavior) {
-                services.add(value.toString());
-            }
-
-            return Array.from(services);
-        }
+        static getInitializedConditionals(value: any): any[];
 
         /**
          * Computes a reasonably unique hash of a value.
@@ -458,15 +309,7 @@ declare namespace Jymfony.Component.DependencyInjection {
          *
          * @returns {string}
          */
-        static hash(value) {
-            const hash = crypto.createHash('sha256');
-            hash.update(__jymfony.serialize(value));
-
-            return __jymfony.strtr(hash.digest('base64').substr(0, 7), {
-                '/': '.',
-                '+': '_',
-            });
-        }
+        static hash(value: any): string;
 
         /**
          * Retrieve the currently set proxy instantiator or create a new one.
@@ -475,160 +318,26 @@ declare namespace Jymfony.Component.DependencyInjection {
          *
          * @private
          */
-        _getProxyInstantiator() {
-            if (undefined === this._proxyInstantiator) {
-                this._proxyInstantiator = new RealServiceInstantiator();
-            }
-
-            return this._proxyInstantiator;
-        }
+        private _getProxyInstantiator(): InstantiatorInterface;
 
         /**
-         * Calls a method when creating service
-         *
-         * @param {*} service
-         * @param {Array} call
-         *
-         * @private
+         * Calls a method when creating service.
          */
-        _callMethod(service, call) {
-            this._getFunctionCall(service, call)();
-        }
+        private _callMethod(service: any, call: any[]): void;
 
         /**
          * Gets a method call bound to a service and its arguments.
-         *
-         * @param {*} service
-         * @param {Array} call
-         *
-         * @returns {Function}
-         *
-         * @private
          */
-        _getFunctionCall(service, call) {
-            const services = __self.getServiceConditionals(call[1]);
-            for (const service of services) {
-                if (!this.has(service)) {
-                    return;
-                }
-            }
-
-            for (const service of __self.getInitializedConditionals(call[1])) {
-                if (!this._doGet(service, Container.IGNORE_ON_UNINITIALIZED_REFERENCE)) {
-                    return;
-                }
-            }
-
-            call = getCallableFromArray([service, call[0]]);
-            return () => call.apply(service, this._resolveServices(this.parameterBag.unescapeValue(this.parameterBag.resolveValue(call[1]))));
-        }
+        private _getFunctionCall(service: any, call: any[]): Function;
 
         /**
          * Shares a service in the container.
-         *
-         * @param {Jymfony.Component.DependencyInjection.Definition} definition
-         * @param {*} service
-         * @param {string} id
-         *
-         * @private
          */
-        _shareService(definition, service, id) {
-            if (!definition.isShared()) {
-                return;
-            }
-
-            this._services[id] = service;
-        }
+        private _shareService(definition: Definition, service: any, id: string): void;
 
         /**
          * Replaces service references by the real service instance.
-         *
-         * @param {*} value
-         *
-         * @returns {*}
-         *
-         * @private
          */
-        _resolveServices(value) {
-            if (value instanceof Map) {
-                for (const [k, v] of value.entries()) {
-                    value.set(k, this._resolveServices(v));
-                }
-            } else if (value instanceof ServiceClosureArgument) {
-                value = () => {
-                    return this._resolveServices(value.values[0]);
-                };
-            } else if (value instanceof IteratorArgument) {
-                const self = this;
-                value = new RewindableGenerator(function* () {
-                    for (const [k, v] of __jymfony.getEntries(value.values)) {
-                        const conditionals = __self.getServiceConditionals(v);
-                        let y = true;
-                        for (const s of conditionals) {
-                            if (!self.has(s)) {
-                                y = false;
-                                break;
-                            }
-                        }
-
-                        if (!y) {
-                            continue;
-                        }
-
-                        for (const s of conditionals) {
-                            if (!self._doGet(s, Container.IGNORE_ON_UNINITIALIZED_REFERENCE)) {
-                                y = false;
-                                break;
-                            }
-                        }
-
-                        if (!y) {
-                            continue;
-                        }
-
-                        yield [k, self._resolveServices(v)];
-                    }
-                }, () => {
-                    let count = 0;
-                    for (const v of value.values) {
-                        const conditionals = __self.getServiceConditionals(v);
-                        let y = true;
-                        for (const s of conditionals) {
-                            if (!this.has(s)) {
-                                y = false;
-                                break;
-                            }
-                        }
-
-                        if (!y) {
-                            continue;
-                        }
-
-                        for (const s of conditionals) {
-                            if (!this._doGet(s, Container.IGNORE_ON_UNINITIALIZED_REFERENCE)) {
-                                y = false;
-                                break;
-                            }
-                        }
-
-                        if (!y) {
-                            continue;
-                        }
-
-                        ++count;
-                    }
-
-                    return count;
-                });
-            } else if (value instanceof Reference) {
-                value = this._doGet(value.toString(), value.invalidBehavior);
-            } else if (value instanceof Definition) {
-                value = this._createService(value, undefined);
-            } else if (value instanceof Parameter) {
-                value = this.getParameter(value.toString());
-            }
-
-            return value;
-        }
+        private _resolveServices(value: any): any;
     }
 }

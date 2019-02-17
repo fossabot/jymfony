@@ -7,6 +7,7 @@
 /// <reference lib="es2015" />
 /// <reference path="Autoloader/types/index.d.ts" />
 /// <reference path="Cache/types/index.d.ts" />
+/// <reference path="Config/types/index.d.ts" />
 /// <reference path="DateTime/types/index.d.ts" />
 /// <reference path="Debug/types/index.d.ts" />
 /// <reference path="DependencyInjection/types/index.d.ts" />

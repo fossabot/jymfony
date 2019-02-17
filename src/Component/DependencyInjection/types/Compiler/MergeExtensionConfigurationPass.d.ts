@@ -1,9 +1,9 @@
 declare namespace Jymfony.Component.DependencyInjection.Compiler {
     import ContainerBuilder = Jymfony.Component.DependencyInjection.ContainerBuilder;
 
-    export class CompilerPassInterface {
+    export class MergeExtensionConfigurationPass extends implementationOf(CompilerPassInterface) implements CompilerPassInterface {
         /**
-         * Modify container.
+         * @inheritdoc
          */
         process(container: ContainerBuilder): void;
     }
