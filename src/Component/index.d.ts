@@ -11,3 +11,4 @@
 /// <reference path="DateTime/types/index.d.ts" />
 /// <reference path="Debug/types/index.d.ts" />
 /// <reference path="DependencyInjection/types/index.d.ts" />
+/// <reference path="Logger/types/index.d.ts" />

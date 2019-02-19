@@ -1,7 +1,7 @@
 declare namespace Jymfony.Component.Config.Definition.Builder {
     import NodeInterface = Jymfony.Component.Config.Definition.NodeInterface;
 
-    export class TreeBuilder extends implementationOf(NodeParentInterface) implements NodeParentInterface {
+    export class TreeBuilder extends implementationOf(NodeParentInterface) {
         private _root: ArrayNodeDefinition|NodeDefinition;
         private _tree?: NodeInterface;
 

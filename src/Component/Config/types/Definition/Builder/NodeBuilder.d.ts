@@ -2,7 +2,7 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
     /**
      * This class provides a fluent interface for building a node.
      */
-    export class NodeBuilder extends implementationOf(NodeParentInterface) implements NodeParentInterface {
+    export class NodeBuilder extends implementationOf(NodeParentInterface) {
         protected _parent: ParentNodeDefinitionInterface;
         private _nodeMapping: Record<string, string>;
 

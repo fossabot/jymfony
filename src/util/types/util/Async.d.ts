@@ -8,6 +8,6 @@ declare namespace __jymfony {
          * to be completed simply yield-ing it.
          * This function always returns a Promise object.
          */
-        static run(generator: Generator|GeneratorFunction|Function, ...args: any[]): Promise<any>;
+        static run(generator: Invokable|Generator|GeneratorFunction|Function, ...args: any[]): Promise<any>;
     }
 }

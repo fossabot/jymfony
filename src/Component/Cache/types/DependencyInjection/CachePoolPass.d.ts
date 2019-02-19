@@ -2,7 +2,7 @@ declare namespace Jymfony.Component.Cache.DependencyInjection {
     import CompilerPassInterface = Jymfony.Component.DependencyInjection.Compiler.CompilerPassInterface;
     import ContainerBuilder = Jymfony.Component.DependencyInjection.ContainerBuilder;
 
-    export class CachePoolPass extends implementationOf(CompilerPassInterface) implements CompilerPassInterface {
+    export class CachePoolPass extends implementationOf(CompilerPassInterface) {
         /**
          * @inheritdoc
          */

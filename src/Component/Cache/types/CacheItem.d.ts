@@ -2,7 +2,7 @@ declare namespace Jymfony.Component.Cache {
     import DateTime = Jymfony.Component.DateTime.DateTime;
     import TimeSpan = Jymfony.Component.DateTime.TimeSpan;
 
-    export class CacheItem<T> extends implementationOf(CacheItemInterface) implements CacheItemInterface<T> {
+    export class CacheItem<T> extends implementationOf(CacheItemInterface) {
         private _key?: string;
         private _value?: T;
         private _isHit: boolean;

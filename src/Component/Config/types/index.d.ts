@@ -35,3 +35,4 @@
 /// <reference path="Definition/PrototypedArrayNode.d.ts" />
 /// <reference path="Definition/ScalarNode.d.ts" />
 /// <reference path="Definition/VariableNode.d.ts" />
+/// <reference path="Resource/ResourceInterface.d.ts" />

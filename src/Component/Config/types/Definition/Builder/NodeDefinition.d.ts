@@ -4,7 +4,7 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
     /**
      * This class provides a fluent interface for defining a node.
      */
-    export abstract class NodeDefinition extends implementationOf(NodeParentInterface) implements NodeParentInterface {
+    export abstract class NodeDefinition extends implementationOf(NodeParentInterface) {
         protected _parent: NodeParentInterface;
         protected _name: string;
         protected _normalization?: NormalizationBuilder;

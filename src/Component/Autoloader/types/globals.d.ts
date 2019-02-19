@@ -1,9 +1,5 @@
 /// <reference types="node" />
 
-interface Newable<T> {
-    new(...args: any[]): T;
-}
-
 declare class ReflectionClass<T = any> {
     /**
      * Constructor.

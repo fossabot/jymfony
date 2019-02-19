@@ -3,8 +3,8 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
      * This class builds an if expression.
      */
     export class ExprBuilder {
-        public ifPart?: Function;
-        public thenPart?: Function;
+        public ifPart?: Invokable;
+        public thenPart?: Invokable;
         protected _node: NodeDefinition;
 
         /**
@@ -16,14 +16,14 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
         /**
          * Marks the expression as being always used.
          */
-        always(then?: Function): ExprBuilder;
+        always(then?: Invokable): ExprBuilder;
 
         /**
          * Sets a closure to use as tests.
          *
          * The default one tests if the value is true.
          */
-        ifTrue(closure?: Function): ExprBuilder;
+        ifTrue(closure?: Invokable): ExprBuilder;
 
         /**
          * Tests if the value is a string.
@@ -65,7 +65,7 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
         /**
          * Sets the closure to run if the test pass.
          */
-        then(closure: Function): ExprBuilder;
+        then(closure: Invokable): ExprBuilder;
 
         /**
          * Sets a closure returning an empty array.
@@ -102,6 +102,6 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
         /**
          * Builds the expressions.
          */
-        static buildExpressions(expressions: ExprBuilder[]): Function[];
+        static buildExpressions(expressions: ExprBuilder[]): Invokable[];
     }
 }

@@ -16,8 +16,18 @@ declare namespace __jymfony {
 }
 
 declare interface Newable<T> {
+    new(): T;
     new(...args: any[]): T;
 }
+
+declare type Invokable = Function | {
+    __invoke<A extends any[], R>(...args: A): (...args: A) => R;
+    __invoke<A0, A extends any[], R>(arg0: A0, ...args: A): (...args: A) => R;
+    __invoke<A0, A1, A extends any[], R>(arg0: A0, arg1: A1, ...args: A): (...args: A) => R;
+    __invoke<A0, A1, A2, A extends any[], R>(arg0: A0, arg1: A1, arg2: A2, ...args: A): (...args: A) => R;
+    __invoke<A0, A1, A2, A3, A extends any[], R>(arg0: A0, arg1: A1, arg2: A2, arg3: A3, ...args: A): (...args: A) => R;
+    __invoke<AX, R>(...args: AX[]): (...args: AX[]) => R;
+};
 
 declare function mix<T = any>(base: undefined): Newable<__jymfony.JObject>;
 declare function mix<T = any>(base: T): Newable<__jymfony.JObject & T>;
@@ -73,7 +83,7 @@ declare function isCallableArray(value: any): boolean;
 declare function getCallableFromArray(value: any): Function;
 
 declare class BoundFunction {
-    new(thisArg: Object, func: Function|GeneratorFunction): Function;
+    new(thisArg: Object, func: Invokable|Function|GeneratorFunction): Function;
 }
 
 declare class EmptyIterator<T = any> implements Iterable<T> {

@@ -137,7 +137,7 @@ class Logger extends AbstractLogger {
     /**
      * Pops out a processor off the stack.
      *
-     * @returns {Jymfony.Component.Logger.Handler.HandlerInterface}
+     * @returns {Function}
      *
      * @throws {Jymfony.Component.Logger.Exception.LogicException}
      */
@@ -314,7 +314,7 @@ class Logger extends AbstractLogger {
         const it = __jymfony.getEntries(this._handlers);
         let handler;
 
-        while (handler = it.value[1]) {
+        while ((handler = it.value[1])) {
             if (handler.isHandling(record)) {
                 return true;
             }

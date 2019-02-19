@@ -4,7 +4,7 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
      */
     export class NormalizationBuilder {
         public node: NodeDefinition;
-        public $before: (Function|ExprBuilder)[];
+        public $before: (Invokable|ExprBuilder)[];
         public $remappings: [string, string][];
 
         /**
@@ -24,6 +24,6 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
         /**
          * Registers a closure to run before the normalization or an expression builder to build it if null is provided.
          */
-        before(closure?: Function): NormalizationBuilder|ExprBuilder;
+        before(closure?: Invokable): NormalizationBuilder|ExprBuilder;
     }
 }

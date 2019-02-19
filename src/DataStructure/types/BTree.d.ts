@@ -8,7 +8,7 @@ declare class BTree<K = any, V = any> extends Object implements Iterable<[K, V]>
      * The function should return 0 if elements are equals, 1 if the first argument
      * is greater of the second, -1 if is lesser.
      */
-    constructor(cmp_function?: Function);
+    constructor(cmp_function?: Invokable);
 
     /**
      * Whether the collection is empty.

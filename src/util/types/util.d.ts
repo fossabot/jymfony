@@ -9,7 +9,7 @@ declare namespace __jymfony {
     /**
      * Executes a callback iterating asynchronously onto the given iterator.
      */
-    function forAwait(iterator: Iterable<any>|AsyncIterable<any>, callback: Function|GeneratorFunction): Promise<any>;
+    function forAwait(iterator: Iterable<any>|AsyncIterable<any>, callback: Invokable|Function|GeneratorFunction): Promise<any>;
 
     /**
      * Stops execution for the given number of ms.
@@ -31,7 +31,7 @@ declare namespace __jymfony {
      * Creates a function that delays invoking a function after
      * a given time has elapsed, de-duplicating calls.
      */
-    function debounce(func: Function|GeneratorFunction, wait: number): Function;
+    function debounce(func: Invokable|Function|GeneratorFunction, wait: number): Function;
 
     /**
      * Gets a method given an object and the method name.

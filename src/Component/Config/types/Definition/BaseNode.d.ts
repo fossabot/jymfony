@@ -5,8 +5,8 @@ declare namespace Jymfony.Component.Config.Definition {
     export abstract class BaseNode extends implementationOf(NodeInterface) {
         protected _name: string;
         protected _parent: NodeInterface|undefined;
-        private _normalizationClosures: Function[];
-        private _finalValidationClosures: Function[];
+        private _normalizationClosures: Invokable[];
+        private _finalValidationClosures: Invokable[];
         private _allowOverwrite: boolean;
         private _required: boolean;
         private _deprecationMessage: string|undefined;
@@ -74,14 +74,14 @@ declare namespace Jymfony.Component.Config.Definition {
         /**
          * Sets the closures used for normalization.
          */
-        setNormalizationClosures(closures: Function[]): void;
+        setNormalizationClosures(closures: Invokable[]): void;
 
         /**
          * Sets the closures used for final validation.
          *
          * @param closures An array of Closures used for final validation
          */
-        setFinalValidationClosures(closures: Function[]): void;
+        setFinalValidationClosures(closures: Invokable[]): void;
 
         /**
          * Checks if this node is _required.

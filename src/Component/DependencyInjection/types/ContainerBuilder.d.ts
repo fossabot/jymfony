@@ -1,13 +1,10 @@
-interface Newable<T> {
-    new(...args: any[]): T;
-}
-
 declare namespace Jymfony.Component.DependencyInjection {
     import Compiler = Jymfony.Component.DependencyInjection.Compiler.Compiler;
     import CompilerPassInterface = Jymfony.Component.DependencyInjection.Compiler.CompilerPassInterface;
     import InstantiatorInterface = Jymfony.Component.DependencyInjection.LazyProxy.InstantiatorInterface;
     import ParameterBag = Jymfony.Component.DependencyInjection.ParameterBag.ParameterBag;
     import ExtensionInterface = Jymfony.Component.DependencyInjection.Extension.ExtensionInterface;
+    import ResourceInterface = Jymfony.Component.Config.Resource.ResourceInterface;
     type ServiceIdentifier = string|symbol|Newable<any>;
 
     class ContainerBuilder extends Container {

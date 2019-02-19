@@ -3,7 +3,7 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
      * This class builds validation conditions.
      */
     export class ValidationBuilder {
-        public rules: (Function|ExprBuilder)[];
+        public rules: (Invokable|ExprBuilder)[];
         protected _node: NodeDefinition;
 
         /**
@@ -15,6 +15,6 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
         /**
          * Sets whether the node can be unset.
          */
-        rule(closure?: Function): ExprBuilder|ValidationBuilder;
+        rule(closure?: Invokable): ExprBuilder|ValidationBuilder;
     }
 }
