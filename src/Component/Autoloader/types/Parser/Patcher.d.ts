@@ -5,8 +5,6 @@ declare namespace Jymfony.Component.Autoloader.Parser {
 
         /**
          * Constructor.
-         *
-         * @param {string} code
          */
         constructor(code: string);
 

@@ -1,5 +1,3 @@
-const ScalarNodeDefinition = Jymfony.Component.Config.Definition.Builder.ScalarNodeDefinition;
-const InvalidDefinitionException = Jymfony.Component.Config.Definition.Exception.InvalidDefinitionException;
 declare namespace Jymfony.Component.Config.Definition.Builder {
     /**
      * Abstract class that contains common code of integer and float node definitions.

@@ -1,7 +1,7 @@
 declare namespace Jymfony.Component.DependencyInjection {
     import ParameterBag = Jymfony.Component.DependencyInjection.ParameterBag.ParameterBag;
 
-    class Container extends implementationOf(ContainerInterface) {
+    export class Container extends implementationOf(ContainerInterface) {
         public readonly EXCEPTION_ON_INVALID_REFERENCE = 1;
         public readonly NULL_ON_INVALID_REFERENCE = 2;
         public readonly IGNORE_ON_INVALID_REFERENCE = 3;

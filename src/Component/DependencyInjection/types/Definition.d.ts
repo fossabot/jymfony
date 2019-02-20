@@ -1,5 +1,5 @@
 declare namespace Jymfony.Component.DependencyInjection {
-    class Definition {
+    export class Definition {
         private _class: string|undefined;
         private _arguments: any[];
         private _module: string[]|undefined;
@@ -82,8 +82,6 @@ declare namespace Jymfony.Component.DependencyInjection {
 
         /**
          * Gets the argument list.
-         *
-         * @returns {Array}
          */
         getArguments(): any[];
 
@@ -99,11 +97,6 @@ declare namespace Jymfony.Component.DependencyInjection {
 
         /**
          * Sets a property to set to the service.
-         *
-         * @param {string} property
-         * @param {*} value
-         *
-         * @returns {Jymfony.Component.DependencyInjection.Definition}
          */
         addProperty(property: string, value: any): Definition;
 
@@ -199,10 +192,6 @@ declare namespace Jymfony.Component.DependencyInjection {
 
         /**
          * Sets if this service is public (can be retrieved by Container#get).
-         *
-         * @param {boolean} _public
-         *
-         * @returns {Jymfony.Component.DependencyInjection.Definition}
          */
         setPublic(_public: boolean): Definition;
 
@@ -269,8 +258,6 @@ declare namespace Jymfony.Component.DependencyInjection {
 
         /**
          * Gets the configurator for this service.
-         *
-         * @returns {string|Array|Function|undefined}
          */
         getConfigurator(): string|string[]|Invokable|undefined;
 

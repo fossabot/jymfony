@@ -1,5 +1,5 @@
 declare namespace Jymfony.Component.Config.Definition {
-    class ScalarNode extends VariableNode {
+    export class ScalarNode extends VariableNode {
         /**
          * @inheritdoc
          */

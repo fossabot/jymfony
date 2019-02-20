@@ -106,7 +106,7 @@ declare namespace __jymfony {
     /**
      * A writable stream that buffers all the content.
      */
-    class StreamBuffer extends Writable {
+    export class StreamBuffer extends Writable {
         /**
          * The buffer.
          */

@@ -2,7 +2,7 @@ declare namespace Jymfony.Component.Config.Definition {
     /**
      * Represents a prototyped Array node in the config tree.
      */
-    class PrototypedArrayNode extends ArrayNode {
+    export class PrototypedArrayNode extends ArrayNode {
         private _prototype?: NodeInterface;
         private _keyAttribute?: string;
         private _removeKeyAttribute: boolean;

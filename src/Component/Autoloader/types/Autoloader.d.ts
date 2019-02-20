@@ -4,8 +4,6 @@ declare namespace Jymfony.Component.Autoloader {
          * Debug flag.
          * If true, the autoloader will throw ClassNotFoundException if
          * the class (or a namespace) does not exist.
-         *
-         * @returns {boolean}
          */
         public debug: boolean;
         public readonly finder: Finder;

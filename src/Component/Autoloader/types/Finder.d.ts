@@ -28,8 +28,6 @@ declare namespace Jymfony.Component.Autoloader {
         /**
          * Get module names list.
          * Note that this will return top-level modules ONLY.
-         *
-         * @returns {IterableIterator|Array}
          */
         listModules(): IterableIterator<string>|string[];
 

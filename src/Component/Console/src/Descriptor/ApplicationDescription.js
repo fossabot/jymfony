@@ -20,7 +20,7 @@ class ApplicationDescription {
     }
 
     /**
-     * @returns {string[]}
+     * @returns {{ id: string, commands: string[] }[]}
      */
     get namespaces() {
         if (undefined === this._namespaces) {
@@ -31,7 +31,7 @@ class ApplicationDescription {
     }
 
     /**
-     * @returns {Jymfony.Component.Console.Command.Command[]}
+     * @returns {Object.<string, Jymfony.Component.Console.Command.Command>}
      */
     get commands() {
         if (undefined === this._commands) {

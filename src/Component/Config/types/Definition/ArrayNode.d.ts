@@ -1,5 +1,5 @@
 declare namespace Jymfony.Component.Config.Definition {
-    class ArrayNode extends BaseNode {
+    export class ArrayNode extends BaseNode {
         protected _children: Record<string, NodeInterface>;
         protected _allowFalse: boolean;
         protected _allowNewKeys: boolean;

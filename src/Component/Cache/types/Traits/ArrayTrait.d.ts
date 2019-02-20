@@ -20,9 +20,6 @@ declare namespace Jymfony.Component.Cache.Traits {
         __construct(): void;
         constructor();
 
-        /**
-         * @returns {Promise<boolean>}
-         */
         prune(): Promise<boolean>;
 
         /**

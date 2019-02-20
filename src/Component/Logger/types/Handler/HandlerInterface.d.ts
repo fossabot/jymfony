@@ -12,9 +12,7 @@ declare namespace Jymfony.Component.Logger.Handler {
          * is no guarantee that handle() will not be called, and isHandling() might not be called
          * for a given record.
          *
-         * @param {Object.<*>} record Partial log record containing only a level key
-         *
-         * @returns {boolean}
+         * @param record Partial log record containing only a level key
          */
         isHandling(record: LogRecordLevel): boolean;
 

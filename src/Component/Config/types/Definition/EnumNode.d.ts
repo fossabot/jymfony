@@ -10,9 +10,6 @@ declare namespace Jymfony.Component.Config.Definition {
          */
         __construct(name: string, parent?: NodeInterface, values?: any[]): void;
 
-        /**
-         * @returns {Array}
-         */
         getValues(): any[];
 
         /**

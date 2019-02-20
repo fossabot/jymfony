@@ -29,10 +29,6 @@ declare namespace Jymfony.Component.DependencyInjection.ParameterBag {
 
         /**
          * Gets a parameter.
-         *
-         * @param {string} name
-         *
-         * @returns {*}
          */
         get(name: string): any;
 

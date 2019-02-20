@@ -5,8 +5,6 @@ declare namespace Jymfony.Component.DateTime {
     export class TimeSpan {
         /**
          * Constructor.
-         *
-         * @param {string} [duration]
          */
         constructor(duration?: string);
 

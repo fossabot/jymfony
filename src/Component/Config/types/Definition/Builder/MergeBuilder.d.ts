@@ -25,8 +25,6 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
 
         /**
          * Returns the related node.
-         *
-         * @returns {Jymfony.Component.Config.Definition.Builder.NodeDefinition|Jymfony.Component.Config.Definition.Builder.ArrayNodeDefinition|Jymfony.Component.Config.Definition.Builder.VariableNodeDefinition}
          */
         end(): NodeDefinition|ArrayNodeDefinition|VariableNodeDefinition;
     }

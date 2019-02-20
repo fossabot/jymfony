@@ -17,19 +17,11 @@ declare namespace Jymfony.Component.Cache.Adapter {
 
         /**
          * Creates a system cache pool.
-         *
-         * @param {string} namespace
-         * @param {int} defaultLifetime
-         * @param {string} directory
-         * @param {Jymfony.Component.Logger.LoggerInterface} [logger]
          */
         static createSystemCache<T = any>(namespace: string, defaultLifetime: number, directory: string, logger?: LoggerInterface): CacheItemPoolInterface<T>;
 
         /**
          * Creates a connection for cache adapter.
-         *
-         * @param {string} dsn
-         * @param {Object.<string, *>} options
          */
         static createConnection(dsn: string, options: any): any;
 

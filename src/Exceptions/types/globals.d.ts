@@ -18,7 +18,8 @@ declare class Exception extends Error {
     /**
      * Constructor.
      */
-    __construct(message, code?: number, previous?: Error);
+    __construct(message?: string, code?: number, previous?: Error): void;
+    constructor(message?: string, code?: number, previous?: Error);
 
     /**
      * Parses the stack trace of the given error and

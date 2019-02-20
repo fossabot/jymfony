@@ -7,7 +7,7 @@ declare namespace Jymfony.Component.DependencyInjection {
     import ResourceInterface = Jymfony.Component.Config.Resource.ResourceInterface;
     type ServiceIdentifier = string|symbol|Newable<any>;
 
-    class ContainerBuilder extends Container {
+    export class ContainerBuilder extends Container {
         private _extensions: Record<string, ExtensionInterface>;
         private _extensionConfigs: Record<string, Record<string, any>[]>;
         private _definitions: Record<string, Definition>;
@@ -64,9 +64,7 @@ declare namespace Jymfony.Component.DependencyInjection {
         /**
          * Adds the object class hierarchy as resources.
          *
-         * @param {*} object An object instance
-         *
-         * @returns {Jymfony.Component.DependencyInjection.ContainerBuilder}
+         * @param object An object instance
          */
         addObjectResource(object: any): ContainerBuilder;
 
@@ -118,8 +116,6 @@ declare namespace Jymfony.Component.DependencyInjection {
 
         /**
          * Gets a service.
-         *
-         * @returns {*}
          */
         get<T>(id: Newable<T>, invalidBehavior?: number): T;
         get(id: string|symbol, invalidBehavior?: number): any;
@@ -138,9 +134,6 @@ declare namespace Jymfony.Component.DependencyInjection {
 
         /**
          * Prepends a configuration object to the extension configs.
-         *
-         * @param {string} name
-         * @param {Object} config
          */
         prependExtensionConfig(name: string, config: any): void;
 
@@ -165,8 +158,6 @@ declare namespace Jymfony.Component.DependencyInjection {
 
         /**
          * Sets service aliases.
-         *
-         * @param {Object.<string, string|Jymfony.Component.DependencyInjection.Alias>} aliases
          */
         setAliases(aliases: Record<string, string|Alias>): void;
 
@@ -187,17 +178,11 @@ declare namespace Jymfony.Component.DependencyInjection {
 
         /**
          * Gets all defined aliases.
-         *
-         * @returns {Object.<string, Jymfony.Component.DependencyInjection.Alias>}
          */
         getAliases(): Record<string, Alias>;
 
         /**
          * Gets an alias.
-         *
-         * @param {string} id
-         *
-         * @returns {Jymfony.Component.DependencyInjection.Alias}
          */
         getAlias(id: string): Alias;
 
@@ -210,22 +195,16 @@ declare namespace Jymfony.Component.DependencyInjection {
 
         /**
          * Adds the service definitions.
-         *
-         * @param {Jymfony.Component.DependencyInjection.Definition[]} definitions
          */
         addDefinitions(definitions: Definition[]): void;
 
         /**
          * Sets the service definitions.
-         *
-         * @param {Jymfony.Component.DependencyInjection.Definition[]} definitions
          */
         setDefinitions(definitions: Definition[]): void;
 
         /**
          * Gets all service definitions.
-         *
-         * @returns {Object.<string, Jymfony.Component.DependencyInjection.Definition>}
          */
         getDefinitions(): Record<string, Definition>;
 
@@ -238,10 +217,6 @@ declare namespace Jymfony.Component.DependencyInjection {
 
         /**
          * Returns true if a service definition exists under the given identifier.
-         *
-         * @param {string} id
-         *
-         * @returns {boolean}
          */
         hasDefinition(id: ServiceIdentifier): boolean;
 
@@ -270,15 +245,11 @@ declare namespace Jymfony.Component.DependencyInjection {
 
         /**
          * Returns service ids for a given tag.
-         *
-         * @returns {Object.<string, Object>}
          */
         findTaggedServiceIds(name: string): Record<string, any>;
 
         /**
          * Returns all the defined tags.
-         *
-         * @returns {string[]}
          */
         findTags(): string[];
 
@@ -302,18 +273,12 @@ declare namespace Jymfony.Component.DependencyInjection {
         /**
          * Computes a reasonably unique hash of a value.
          *
-         * @param {*} value A serializable value
-         *
-         * @returns {string}
+         * @param value A serializable value
          */
         static hash(value: any): string;
 
         /**
          * Retrieve the currently set proxy instantiator or create a new one.
-         *
-         * @returns {Jymfony.Component.DependencyInjection.LazyProxy.InstantiatorInterface}
-         *
-         * @private
          */
         private _getProxyInstantiator(): InstantiatorInterface;
 

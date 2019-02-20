@@ -150,9 +150,6 @@ declare class ReflectionMethod {
 
     /**
      * Constructor.
-     *
-     * @param {ReflectionClass} reflectionClass
-     * @param {string} methodName
      */
     constructor(reflectionClass: ReflectionClass, methodName: string);
 

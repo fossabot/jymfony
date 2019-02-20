@@ -830,6 +830,8 @@ class Application {
      * @param {string[]} abbrevs Abbreviated suggestions to convert
      *
      * @returns {string} A formatted string of abbreviated suggestions
+     *
+     * @private
      */
     _getAbbreviationSuggestions(abbrevs) {
         return '    ' + abbrevs.join('\n    ');
@@ -841,6 +843,8 @@ class Application {
      * @param {string} name The full name of the command
      *
      * @returns {string[]} The namespaces of the command
+     *
+     * @private
      */
     _extractAllNamespaces(name) {
         const parts = name.split(':');

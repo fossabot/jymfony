@@ -1,8 +1,5 @@
 declare namespace Jymfony.Component.Cache.Traits {
     export class FilesystemTrait {
-        /**
-         * @returns {Promise<boolean>}
-         */
         prune(): Promise<boolean>;
 
         /**

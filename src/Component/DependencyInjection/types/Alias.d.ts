@@ -1,5 +1,5 @@
 declare namespace Jymfony.Component.DependencyInjection {
-    class Alias {
+    export class Alias {
         /**
          * Constructor.
          */

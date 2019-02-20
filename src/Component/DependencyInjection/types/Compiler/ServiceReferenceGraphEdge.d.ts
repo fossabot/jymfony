@@ -1,5 +1,5 @@
 declare namespace Jymfony.Component.DependencyInjection.Compiler {
-    class ServiceReferenceGraphEdge {
+    export class ServiceReferenceGraphEdge {
         private _sourceNode: ServiceReferenceGraphNode;
         private _destinationNode: ServiceReferenceGraphNode;
         private _value: any;

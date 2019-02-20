@@ -27,8 +27,6 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
 
         /**
          * Tests if the value is a string.
-         *
-         * @returns {Jymfony.Component.Config.Definition.Builder.ExprBuilder}
          */
         ifString(): ExprBuilder;
 

@@ -2,7 +2,7 @@ declare namespace Jymfony.Component.Config.Definition {
     /**
      * This node represents a numeric value in the config tree.
      */
-    class NumericNode extends ScalarNode {
+    export class NumericNode extends ScalarNode {
         protected _min: number;
         protected _max: number;
 

@@ -1,5 +1,5 @@
 declare namespace __jymfony {
-    class Platform {
+    export class Platform {
         /**
          * Checks if this node version has async function support.
          */

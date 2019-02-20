@@ -39,10 +39,6 @@ declare namespace Jymfony.Component.Logger {
 
         /**
          * Push a logger processor.
-         *
-         * @param {Invokable} processor
-         *
-         * @returns {Jymfony.Component.Logger.Logger}
          */
         pushProcessor(processor: Invokable): Logger;
 

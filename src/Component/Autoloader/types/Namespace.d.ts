@@ -14,24 +14,16 @@ declare namespace Jymfony.Component.Autoloader {
 
         /**
          * Add a base directory to search classes in
-         *
-         * @param {string} directory
-         *
-         * @returns {Jymfony.Component.Autoloader.Namespace}
          */
         addDirectory(directory: string): Namespace;
 
         /**
          * Get the namespace FQN
-         *
-         * @returns {string}
          */
         readonly name: string;
 
         /**
          * Gets the namespace base directories.
-         *
-         * @returns {string[]}
          */
         readonly directories: string[];
     }

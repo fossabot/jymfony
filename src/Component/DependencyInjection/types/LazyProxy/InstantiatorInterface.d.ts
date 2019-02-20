@@ -5,7 +5,7 @@ declare namespace Jymfony.Component.DependencyInjection.LazyProxy {
     /**
      * Lazy proxy instantiator.
      */
-    class InstantiatorInterface {
+    export class InstantiatorInterface {
         /**
          * Instantiate a proxy object.
          */

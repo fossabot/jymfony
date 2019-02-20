@@ -6,49 +6,28 @@ declare namespace Jymfony.Component.DateTime {
     export class DateTimeZone {
         /**
          * Gets a DateTimeZone object for the specified timezone.
-         *
-         * @param {string} timezone
-         *
-         * @returns {DateTimeZone}
          */
         static get(timezone: string): DateTimeZone;
 
-        /**
-         * @returns {string[]}
-         */
         static readonly identifiers: string[];
 
         /**
          * Gets the timezone name.
-         *
-         * @returns {string}
          */
         readonly name: string;
 
         /**
          * Get the offset for a given datetime or timestamp.
-         *
-         * @param {Jymfony.Component.DateTime.DateTime|int} datetime
-         *
-         * @returns {int|undefined}
          */
         getOffset(datetime: DateTime|number): number|undefined;
 
         /**
          * Gets the timezone abbrev name for a given timestamp or DateTime.
-         *
-         * @param {Jymfony.Component.DateTime.DateTime|int} datetime
-         *
-         * @returns {string}
          */
         getAbbrev(datetime: DateTime|number): string;
 
         /**
          * Checks if DST is applicable for a given timestamp or DateTime.
-         *
-         * @param {Jymfony.Component.DateTime.DateTime|int} datetime
-         *
-         * @returns {boolean}
          */
         isDST(datetime: DateTime|number): boolean;
 

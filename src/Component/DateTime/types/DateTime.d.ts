@@ -34,8 +34,6 @@ declare namespace Jymfony.Component.DateTime {
 
         /**
          * Gets a new DateTime representing midnight of today.
-         *
-         * @returns {Jymfony.Component.DateTime.DateTime}
          */
         static readonly today: DateTime;
 
@@ -86,8 +84,6 @@ declare namespace Jymfony.Component.DateTime {
 
         /**
          * Gets the UNIX timestamp.
-         *
-         * @returns {int}
          */
         readonly timestamp: number;
 

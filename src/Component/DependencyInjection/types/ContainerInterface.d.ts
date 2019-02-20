@@ -1,5 +1,5 @@
 declare namespace Jymfony.Component.DependencyInjection {
-    class ContainerInterface {
+    export class ContainerInterface {
         /**
          * Finds an entry of the container by its identifier and returns it.
          *

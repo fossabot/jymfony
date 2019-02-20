@@ -1,7 +1,7 @@
 /// <reference lib="es2015" />
 
 declare namespace __jymfony {
-    class Async {
+    export class Async {
         /**
          * Run an async generator.
          * Using this function you can use a generator to wait a promise

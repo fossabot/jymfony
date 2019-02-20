@@ -1,5 +1,5 @@
 declare namespace Jymfony.Component.Config.Definition {
-    class VariableNode extends BaseNode {
+    export class VariableNode extends BaseNode {
         protected _defaultValueSet: boolean;
         protected _allowEmptyValue: boolean;
         protected _defaultValue: any;
@@ -28,7 +28,7 @@ declare namespace Jymfony.Component.Config.Definition {
         /**
          * Sets if this node is allowed to have an empty value.
          *
-         * @param {boolean} bool True if this entity will accept empty values
+         * @param bool True if this entity will accept empty values
          */
         setAllowEmptyValue(bool: boolean): void;
 

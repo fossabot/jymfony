@@ -7,7 +7,7 @@ declare namespace __jymfony {
     /**
      * Base class for all jymfony managed objects.
      */
-    class JObject {
+    export class JObject {
         /**
          * Constructor.
          */

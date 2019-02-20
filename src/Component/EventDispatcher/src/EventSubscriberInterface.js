@@ -1,6 +1,4 @@
 /**
- * Container extension
- *
  * @memberOf Jymfony.Component.EventDispatcher
  */
 class EventSubscriberInterface {
