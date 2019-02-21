@@ -7,6 +7,7 @@
 /// <reference path="Descriptor/DescriptorInterface.d.ts" />
 /// <reference path="Descriptor/JsonDescriptor.d.ts" />
 /// <reference path="Descriptor/TextDescriptor.d.ts" />
+/// <reference path="Event/ConsoleEvent.d.ts" />
 /// <reference path="Formatter/OutputFormatterInterface.d.ts" />
 /// <reference path="Formatter/OutputFormatterStyleInterface.d.ts" />
 /// <reference path="Input/InputArgument.d.ts" />
