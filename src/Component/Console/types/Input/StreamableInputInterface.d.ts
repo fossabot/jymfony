@@ -1,9 +1,11 @@
 declare namespace Jymfony.Component.Console.Input {
-    class StreamableInputInterface extends InputInterface {
+    export class StreamableInputInterface extends InputInterface implements MixinInterface<StreamableInputInterface> {
+        readonly definition: Newable<StreamableInputInterface>;
+
         /**
-         * The input stream to read from when interacting with the user.
+         * Sets/gets the input stream to read from when interacting with the user.
          * This is mainly useful for testing purpose.
          */
-        public stream: NodeJS.ReadableStream;
+        public stream: NodeJS.ReadableStream|undefined;
     }
 }

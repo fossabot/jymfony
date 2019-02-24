@@ -1,8 +1,5 @@
 /// <reference lib="es2015" />
 
-declare function getInterface<T = any>(definition: T): T;
-declare function getTrait<T = any>(definition: T): T;
-
 declare namespace __jymfony {
     /**
      * Base class for all jymfony managed objects.
@@ -19,6 +16,13 @@ declare interface Newable<T> {
     new(): T;
     new(...args: any[]): T;
 }
+
+declare class MixinInterface<T> {
+    public readonly definition: Newable<T>;
+}
+
+declare function getInterface<T = any>(definition: T): T & MixinInterface<T>;
+declare function getTrait<T = any>(definition: T): T & MixinInterface<T>;
 
 declare type Invokable<T = any> = (...args: any[]) => T | {
     __invoke<A extends any[]>(...args: A): (...args: A) => T;
