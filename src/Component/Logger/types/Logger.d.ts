@@ -2,23 +2,27 @@ declare namespace Jymfony.Component.Logger {
     import DateTimeZone = Jymfony.Component.DateTime.DateTimeZone;
     import HandlerInterface = Jymfony.Component.Logger.Handler.HandlerInterface;
 
+    type InvokableProcessor = (record: LogRecord) => LogRecord | {
+        __invoke(record: LogRecord): LogRecord;
+    };
+
     export class Logger extends AbstractLogger {
-        public readonly levels: Record<LogLevel, string>;
+        public static readonly levels: Record<LogLevel, string>;
 
         public readonly name: string;
         public handlers: HandlerInterface[];
-        public readonly processors: Invokable[];
+        public readonly processors: InvokableProcessor[];
 
         protected _name: string;
         protected _handlers: HandlerInterface[];
-        protected _processors: Invokable[];
+        protected _processors: InvokableProcessor[];
         protected _timezone: DateTimeZone | undefined;
 
         /**
          * Construct the logger.
          */
-        __construct(name: string, handlers?: HandlerInterface[], processors?: Invokable[], timezone?: DateTimeZone): void;
-        constructor(name: string, handlers?: HandlerInterface[], processors?: Invokable[], timezone?: DateTimeZone);
+        __construct(name: string, handlers?: HandlerInterface[], processors?: InvokableProcessor[], timezone?: DateTimeZone): void;
+        constructor(name: string, handlers?: HandlerInterface[], processors?: InvokableProcessor[], timezone?: DateTimeZone);
 
         /**
          * Returns a new cloned instance with name changed.
@@ -40,14 +44,14 @@ declare namespace Jymfony.Component.Logger {
         /**
          * Push a logger processor.
          */
-        pushProcessor(processor: Invokable): Logger;
+        pushProcessor(processor: InvokableProcessor): Logger;
 
         /**
          * Pops out a processor off the stack.
          *
          * @throws {Jymfony.Component.Logger.Exception.LogicException}
          */
-        popProcessor(): Invokable
+        popProcessor(): InvokableProcessor
 
         /**
          * Adds a record to the log.

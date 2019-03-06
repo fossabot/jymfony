@@ -168,7 +168,8 @@ class Logger extends AbstractLogger {
      * @returns {boolean}
      */
     addRecord(level, message, context = {}) {
-        const levelName = this.constructor.levels[level];
+        /** @var {string} levelName */
+        const levelName = __self.levels[level];
 
         const it = __jymfony.getEntries(this._handlers);
         let handlerKey, handler, current;

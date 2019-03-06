@@ -34,6 +34,13 @@ class Input extends implementationOf(StreamableInputInterface) {
          */
         this._interactive = true;
 
+        /**
+         * @type {stream.Readable}
+         *
+         * @private
+         */
+        this._stream = undefined;
+
         if (! definition) {
             /**
              * @type {Jymfony.Component.Console.Input.InputDefinition}
@@ -189,11 +196,6 @@ class Input extends implementationOf(StreamableInputInterface) {
      * @inheritdoc
      */
     set stream(stream) {
-        /**
-         * @type {Jymfony.Component.Console.Input.StreamableInputInterface}
-         *
-         * @private
-         */
         this._stream = stream;
     }
 }

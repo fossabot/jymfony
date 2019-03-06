@@ -7,7 +7,7 @@ declare namespace Jymfony.Component.Console.Helper {
      * @final
      */
     export class ProgressBar {
-        public static formatters: Record<string, Invokable>;
+        public static formatters: Record<string, Invokable<string>>;
         public static formats: Record<string, string>;
 
         public emptyBarCharacter: string;
@@ -97,14 +97,14 @@ declare namespace Jymfony.Component.Console.Helper {
          * @param name The placeholder name (including the delimiter char like %)
          * @param callable
          */
-        static setPlaceholderFormatterDefinition(name: string, callable: Invokable): void;
+        static setPlaceholderFormatterDefinition(name: string, callable: Invokable<string>): void;
 
         /**
          * Gets the placeholder formatter for a given name.
          *
          * @param name The placeholder name (including the delimiter char like %)
          */
-        static getPlaceholderFormatterDefinition(name: string): Invokable|undefined;
+        static getPlaceholderFormatterDefinition(name: string): Invokable<string>|undefined;
 
         /**
          * Sets a format for a given name.
@@ -172,7 +172,7 @@ declare namespace Jymfony.Component.Console.Helper {
 
         private _determineBestFormat(): string;
 
-        private static _initPlaceholderFormatters(): Record<string, Invokable>;
+        private static _initPlaceholderFormatters(): Record<string, Invokable<string>>;
 
         private static _initFormats(): Record<string, string>;
 

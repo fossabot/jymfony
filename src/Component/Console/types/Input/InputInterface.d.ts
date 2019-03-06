@@ -8,7 +8,7 @@ declare namespace Jymfony.Component.Console.Input {
         /**
          * The first argument from the raw parameters (not parsed).
          */
-        public readonly firstArgument: string;
+        public readonly firstArgument: string|undefined;
 
         /**
          * Gets/sets the input interactivity.

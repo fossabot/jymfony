@@ -143,7 +143,7 @@ class ArrayInput extends Input {
     /**
      * Adds a long option value.
      *
-     * @param {string} name  The long option key
+     * @param {string} name The long option key
      * @param {*} value The value for the option
      *
      * @throws {Jymfony.Component.Console.Exception.InvalidOptionException} When option given doesn't exist
@@ -172,7 +172,7 @@ class ArrayInput extends Input {
     /**
      * Adds an argument value.
      *
-     * @param {string} name  The argument name
+     * @param {string} name The argument name
      * @param {*} value The value for the argument
      *
      * @throws {Jymfony.Component.Console.Exception.InvalidArgumentException} When argument given doesn't exist

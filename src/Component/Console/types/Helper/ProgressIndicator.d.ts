@@ -5,7 +5,7 @@ declare namespace Jymfony.Component.Console.Helper {
      * @final
      */
     export class ProgressIndicator {
-        public static formatters: Record<string, Invokable>;
+        public static formatters: Record<string, Invokable<string>>;
         public static formats: Record<string, string>;
 
         /**
@@ -55,14 +55,14 @@ declare namespace Jymfony.Component.Console.Helper {
          * @param name The placeholder name (including the delimiter char like %)
          * @param callable
          */
-        static setPlaceholderFormatterDefinition(name: string, callable: Invokable): void;
+        static setPlaceholderFormatterDefinition(name: string, callable: Invokable<string>): void;
 
         /**
          * Gets the placeholder formatter for a given name.
          *
          * @param name The placeholder name (including the delimiter char like %)
          */
-        static getPlaceholderFormatterDefinition(name: string): Invokable|undefined;
+        static getPlaceholderFormatterDefinition(name: string): Invokable<string>|undefined;
 
         private _display(): void;
 
@@ -77,7 +77,7 @@ declare namespace Jymfony.Component.Console.Helper {
 
         private _getDefaultIndicators(): string[];
 
-        static initPlaceholderFormatters(): Record<string, Invokable>;
+        static initPlaceholderFormatters(): Record<string, Invokable<string>>;
 
         static initFormats(): Record<string, string>;
     }

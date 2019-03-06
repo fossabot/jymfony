@@ -20,13 +20,13 @@ declare interface Newable<T> {
     new(...args: any[]): T;
 }
 
-declare type Invokable = Function | {
-    __invoke<A extends any[], R>(...args: A): (...args: A) => R;
-    __invoke<A0, A extends any[], R>(arg0: A0, ...args: A): (...args: A) => R;
-    __invoke<A0, A1, A extends any[], R>(arg0: A0, arg1: A1, ...args: A): (...args: A) => R;
-    __invoke<A0, A1, A2, A extends any[], R>(arg0: A0, arg1: A1, arg2: A2, ...args: A): (...args: A) => R;
-    __invoke<A0, A1, A2, A3, A extends any[], R>(arg0: A0, arg1: A1, arg2: A2, arg3: A3, ...args: A): (...args: A) => R;
-    __invoke<AX, R>(...args: AX[]): (...args: AX[]) => R;
+declare type Invokable<T = any> = (...args: any[]) => T | {
+    __invoke<A extends any[]>(...args: A): (...args: A) => T;
+    __invoke<A0, A extends any[]>(arg0: A0, ...args: A): (...args: A) => T;
+    __invoke<A0, A1, A extends any[]>(arg0: A0, arg1: A1, ...args: A): (...args: A) => T;
+    __invoke<A0, A1, A2, A extends any[]>(arg0: A0, arg1: A1, arg2: A2, ...args: A): (...args: A) => T;
+    __invoke<A0, A1, A2, A3, A extends any[]>(arg0: A0, arg1: A1, arg2: A2, arg3: A3, ...args: A): (...args: A) => T;
+    __invoke<AX>(...args: AX[]): (...args: AX[]) => T;
 };
 
 declare function mix<T = any>(base: undefined): Newable<__jymfony.JObject>;
