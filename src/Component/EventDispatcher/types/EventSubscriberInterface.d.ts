@@ -1,5 +1,7 @@
 declare namespace Jymfony.Component.EventDispatcher {
-    export class EventSubscriberInterface {
+    export class EventSubscriberInterface implements MixinInterface {
+        public static readonly definition: Newable<EventSubscriberInterface>;
+
         /**
          * Returns an array of event names this subscriber wants to listen to.
          * The array keys are event names and the value can be:

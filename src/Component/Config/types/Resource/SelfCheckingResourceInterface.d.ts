@@ -1,5 +1,7 @@
 declare namespace Jymfony.Component.Config.Resource {
-    export class SelfCheckingResourceInterface extends ResourceInterface {
+    export class SelfCheckingResourceInterface extends ResourceInterface implements MixinInterface {
+        public static readonly definition: Newable<SelfCheckingResourceInterface>;
+
         /**
          * Returns true if the resource has not been updated since the given timestamp.
          *

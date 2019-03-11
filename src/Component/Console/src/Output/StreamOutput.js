@@ -14,7 +14,7 @@ class StreamOutput extends Output {
      * Constructor.
      *
      * @param {stream} stream
-     * @param {string} [verbosity = Jymfony.Component.Console.Output.ConsoleOutputInterface.VERBOSITY_NORMAL]
+     * @param {int} [verbosity = Jymfony.Component.Console.Output.ConsoleOutputInterface.VERBOSITY_NORMAL]
      * @param {boolean} [decorated]
      * @param {Jymfony.Component.Console.Output.OutputFormatterInterface} [formatter = new Jymfony.Component.Console.Output.OutputFormatter()]
      */

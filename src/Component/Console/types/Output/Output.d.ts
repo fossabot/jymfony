@@ -1,7 +1,7 @@
 declare namespace Jymfony.Component.Console.Output {
     import OutputFormatterInterface = Jymfony.Component.Console.Formatter.OutputFormatterInterface;
 
-    abstract class Output extends implementationOf(OutputInterface) {
+    export abstract class Output extends implementationOf(OutputInterface) {
         public verbosity: number;
         public decorated: boolean;
         public formatter: OutputFormatterInterface;

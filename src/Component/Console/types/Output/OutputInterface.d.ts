@@ -1,7 +1,9 @@
 declare namespace Jymfony.Component.Console.Output {
     import OutputFormatterInterface = Jymfony.Component.Console.Formatter.OutputFormatterInterface;
 
-    export class OutputInterface {
+    export class OutputInterface implements MixinInterface {
+        public static readonly definition: Newable<OutputInterface>;
+
         public static readonly VERBOSITY_QUIET = 16;
         public static readonly VERBOSITY_NORMAL = 32;
         public static readonly VERBOSITY_VERBOSE = 64;

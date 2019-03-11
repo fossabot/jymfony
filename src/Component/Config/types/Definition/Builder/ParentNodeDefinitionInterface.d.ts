@@ -2,7 +2,9 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
     /**
      * An interface that must be implemented by nodes which can have children.
      */
-    export class ParentNodeDefinitionInterface {
+    export class ParentNodeDefinitionInterface implements MixinInterface {
+        public static readonly definition: Newable<ParentNodeDefinitionInterface>;
+
         /**
          * Returns a builder to add children nodes.
          */

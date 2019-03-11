@@ -2,7 +2,9 @@ declare namespace Jymfony.Component.DependencyInjection.Extension {
     import ConfigurationInterface = Jymfony.Component.Config.Definition.ConfigurationInterface;
     import ContainerBuilder = Jymfony.Component.DependencyInjection.ContainerBuilder;
 
-    export class ExtensionInterface {
+    export class ExtensionInterface implements MixinInterface {
+        public static readonly definition: Newable<ExtensionInterface>;
+
         /**
          * Namespace to be used for this extension.
          */

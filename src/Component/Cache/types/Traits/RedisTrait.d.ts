@@ -1,7 +1,8 @@
 declare namespace Jymfony.Component.Cache.Traits {
     import RedisConnectionOptions = Jymfony.Component.Cache.Adapter.RedisConnectionOptions;
 
-    export class RedisTrait {
+    export class RedisTrait implements MixinInterface {
+        public static readonly definition: Newable<RedisTrait>;
         public static readonly defaultConnectionOptions: RedisConnectionOptions;
 
         /**

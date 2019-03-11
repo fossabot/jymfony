@@ -2,7 +2,9 @@ declare namespace Jymfony.Component.Logger.Handler {
     import LogRecordLevel = Jymfony.Component.Logger.LogRecordLevel;
     import LogRecord = Jymfony.Component.Logger.LogRecord;
 
-    export class HandlerInterface {
+    export class HandlerInterface implements MixinInterface {
+        public static readonly definition: Newable<HandlerInterface>;
+
         /**
          * Checks whether the given record will be handled by this handler.
          *

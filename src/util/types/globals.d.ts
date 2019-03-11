@@ -17,12 +17,12 @@ declare interface Newable<T> {
     new(...args: any[]): T;
 }
 
-declare class MixinInterface<T> {
-    public readonly definition: Newable<T>;
+declare class MixinInterface {
+    public static readonly definition: Newable<any>;
 }
 
-declare function getInterface<T = any>(definition: T): T & MixinInterface<T>;
-declare function getTrait<T = any>(definition: T): T & MixinInterface<T>;
+declare function getInterface<T = any>(definition: T): T & MixinInterface;
+declare function getTrait<T = any>(definition: T): T & MixinInterface;
 
 declare type Invokable<T = any> = (...args: any[]) => T | {
     __invoke<A extends any[]>(...args: A): (...args: A) => T;

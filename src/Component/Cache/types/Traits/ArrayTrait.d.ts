@@ -4,7 +4,9 @@ declare namespace Jymfony.Component.Cache.Traits {
     /**
      * @memberOf Jymfony.Component.Cache.Traits
      */
-    export class ArrayTrait extends LoggerAwareTrait {
+    export class ArrayTrait extends LoggerAwareTrait implements MixinInterface {
+        public static readonly definition: Newable<ArrayTrait>;
+
         /**
          * Returns all cached values, with cache miss as null.
          */

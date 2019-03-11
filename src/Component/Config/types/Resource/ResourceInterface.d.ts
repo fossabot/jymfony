@@ -1,5 +1,7 @@
 declare namespace Jymfony.Component.Config.Resource {
-    export class ResourceInterface {
+    export class ResourceInterface implements MixinInterface {
+        public static readonly definition: Newable<ResourceInterface>;
+
         /**
          * Returns a string representation of the Resource.
          *

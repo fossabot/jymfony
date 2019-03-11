@@ -1,5 +1,7 @@
 declare namespace Jymfony.Component.EventDispatcher {
-    export class EventDispatcherInterface {
+    export class EventDispatcherInterface implements MixinInterface {
+        public static readonly definition: Newable<EventDispatcherInterface>;
+
         /**
          * Dispatches an event.
          * Returns a promise that resolves asynchronously running all

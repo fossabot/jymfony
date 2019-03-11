@@ -21,7 +21,9 @@ declare namespace Jymfony.Component.Cache {
      * SHOULD NOT assume that an Item created by one Implementing Library is
      * compatible with a Pool from another Implementing Library.
      */
-    export class CacheItemInterface<T> {
+    export class CacheItemInterface<T> implements MixinInterface {
+        public static readonly definition: Newable<CacheItemInterface<any>>;
+
         /**
          * Returns the key for the current cache item.
          *

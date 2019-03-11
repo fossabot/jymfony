@@ -1,6 +1,6 @@
 declare namespace Jymfony.Component.Console.Input {
-    export class InputInterface implements MixinInterface<InputInterface> {
-        readonly definition: Newable<InputInterface>;
+    export class InputInterface implements MixinInterface {
+        public static readonly definition: Newable<InputInterface>;
 
         /**
          * Returns all the given arguments merged with the default values.

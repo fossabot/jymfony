@@ -1,5 +1,7 @@
 declare namespace Jymfony.Component.DependencyInjection {
-    export class ContainerInterface {
+    export class ContainerInterface implements MixinInterface {
+        public static readonly definition: Newable<ContainerInterface>;
+
         /**
          * Finds an entry of the container by its identifier and returns it.
          *

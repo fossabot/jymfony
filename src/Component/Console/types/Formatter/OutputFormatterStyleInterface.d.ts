@@ -1,5 +1,7 @@
 declare namespace Jymfony.Component.Console.Formatter {
-    export class OutputFormatterStyleInterface {
+    export class OutputFormatterStyleInterface implements MixinInterface {
+        public static readonly definition: Newable<OutputFormatterStyleInterface>;
+
         /**
          * Sets style foreground color.
          */

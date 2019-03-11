@@ -1,5 +1,7 @@
 declare namespace Jymfony.Component.Config.Loader {
-    export class LoaderResolverInterface {
+    export class LoaderResolverInterface implements MixinInterface {
+        public static readonly definition: Newable<LoaderResolverInterface>;
+
         /**
          * Returns a loader able to load the resource.
          *

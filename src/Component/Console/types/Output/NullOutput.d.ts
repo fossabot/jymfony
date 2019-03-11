@@ -6,7 +6,7 @@ declare namespace Jymfony.Component.Console.Output {
      *
      * @final
      */
-    class NullOutput extends implementationOf(OutputInterface) {
+    export class NullOutput extends implementationOf(OutputInterface) {
         public verbosity: number;
         public decorated: boolean;
         public formatter: OutputFormatterInterface;

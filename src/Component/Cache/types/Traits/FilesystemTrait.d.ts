@@ -1,5 +1,7 @@
 declare namespace Jymfony.Component.Cache.Traits {
-    export class FilesystemTrait {
+    export class FilesystemTrait implements MixinInterface {
+        public static readonly definition: Newable<FilesystemTrait>;
+
         prune(): Promise<boolean>;
 
         /**

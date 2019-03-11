@@ -4,7 +4,9 @@ declare namespace Jymfony.Component.Config {
      * an instance of ConfigCacheInterface and initializes the
      * cache if necessary.
      */
-    export class ConfigCacheFactoryInterface {
+    export class ConfigCacheFactoryInterface implements MixinInterface {
+        public static readonly definition: Newable<ConfigCacheFactoryInterface>;
+
         /**
          * Creates a cache instance and (re-)initializes it if necessary.
          *
