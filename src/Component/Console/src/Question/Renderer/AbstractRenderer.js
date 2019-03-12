@@ -14,13 +14,13 @@ class AbstractRenderer extends implementationOf(RendererInterface) {
     /**
      * Constructor.
      *
-     * @param {Jymfony.Console.Question.PasswordQuestion} question
+     * @param {Jymfony.Console.Question.Question} question
      */
     __construct(question) {
         /**
          * The underlying question object.
          *
-         * @type {Jymfony.Console.Question.PasswordQuestion}
+         * @type {Jymfony.Console.Question.Question}
          *
          * @protected
          */
