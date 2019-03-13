@@ -11,7 +11,7 @@ class ConsoleOutput extends mix(StreamOutput, ConsoleOutputInterface) {
      *
      * @param {int} [verbosity = Jymfony.Component.Console.Output.ConsoleOutputInterface.VERBOSITY_NORMAL]
      * @param {boolean} [decorated]
-     * @param {Jymfony.Component.Console.Output.OutputFormatterInterface} [formatter]
+     * @param {Jymfony.Component.Console.Formatter.OutputFormatterInterface} [formatter]
      */
     __construct(verbosity = ConsoleOutputInterface.VERBOSITY_NORMAL, decorated = undefined, formatter = new OutputFormatter()) {
         super.__construct(process.stdout, verbosity, decorated, formatter);

@@ -17,7 +17,6 @@ declare namespace Jymfony.Component.Console.Event {
          */
         // @ts-ignore
         __construct(command: Command, input: InputInterface, output: OutputInterface, exitCode: number): void;
-
         constructor(command: Command, input: InputInterface, output: OutputInterface, exitCode: number);
     }
 }

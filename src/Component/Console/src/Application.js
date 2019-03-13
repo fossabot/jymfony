@@ -45,7 +45,7 @@ class Application {
     /**
      * Sets the event dispatcher.
      *
-     * @param {Jymfony.Component.EventDispatcher.EventDispatcher} dispatcher
+     * @param {Jymfony.Component.EventDispatcher.EventDispatcherInterface} dispatcher
      */
     set dispatcher(dispatcher) {
         this._eventDispatcher = dispatcher;
@@ -110,7 +110,7 @@ class Application {
      * Run the application
      *
      * @param {Jymfony.Component.Console.Input.InputInterface} [input = new ArgvInput()]
-     * @param {Jymfony.Component.Console.Output.OutputInterface} [output new ConsoleOutput()]
+     * @param {Jymfony.Component.Console.Output.OutputInterface} [output = new ConsoleOutput()]
      *
      * @returns {Promise<int>} Promise executing the application
      */
@@ -758,7 +758,7 @@ class Application {
                     output.writeln('', OutputInterface.VERBOSITY_QUIET);
                 }
             }
-        } while (exception = exception.previous);
+        } while ((exception = exception.previous));
 
         if (this._runningCommand) {
             output.writeln(__jymfony.sprintf('<info>%s</info>', this._runningCommand.getSynopsis()), OutputInterface.VERBOSITY_QUIET);

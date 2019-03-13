@@ -28,6 +28,6 @@ declare namespace Jymfony.Component.Console.Descriptor {
 
         private _inspectApplication(): void;
 
-        _sortCommands(commands: Record<string, Command>): IterableIterator<Command>;
+        _sortCommands(commands: Record<string, Command>): IterableIterator<[string, [string, Command][]]>;
     }
 }

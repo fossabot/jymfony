@@ -5,6 +5,10 @@ type StackTraceRecord = {
 }
 
 declare class Exception extends Error {
+    name: string;
+    previous?: Exception|Error;
+    code: number;
+
     /**
      * The parsed stack trace for this exception.
      */
@@ -26,6 +30,10 @@ declare class Exception extends Error {
      * returns it as an key-value object.
      */
     static parseStackTrace(error: Error): StackTraceRecord[];
+
+    private _message: string;
+    private _stackTrace: Record<string, string>[];
+    private _originalStack: string;
 }
 
 declare class BadMethodCallException extends Exception {}
@@ -37,7 +45,7 @@ declare class RuntimeException extends Exception {}
 declare class UnderflowException extends Exception {}
 declare class UnexpectedValueException extends Exception {}
 
-declare module NodeJS  {
+declare module NodeJS {
     interface Global {
         Exception: Newable<Exception>;
         BadMethodCallException: Newable<BadMethodCallException>;

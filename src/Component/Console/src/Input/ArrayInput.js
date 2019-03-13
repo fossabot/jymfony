@@ -94,7 +94,7 @@ class ArrayInput extends Input {
         const params = [];
         for (const [ param, val ] of __jymfony.getEntries(this._parameters)) {
             if (param && '-' === param[0]) {
-                params.push(param + ('' != val ? '=' + this.escapeToken(val) : ''));
+                params.push(param + ('' !== val ? '=' + this.escapeToken(val) : ''));
             } else {
                 params.push(this.escapeToken(val));
             }

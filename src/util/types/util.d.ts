@@ -157,7 +157,7 @@ declare namespace __jymfony {
     /**
      * Strips HTML tags from a string.
      */
-    function strip_tags(input: string, allowed: string): string;
+    function strip_tags(input: string, allowed?: string): string;
 
     /**
      * Replaces parts of strings.

@@ -7,7 +7,7 @@
  *
  * @returns {Boolean}
  */
-const isCallableArray = function isCallableArray(arg) {
+global.isCallableArray = function isCallableArray(arg) {
     if (! isArray(arg) || 2 !== arg.length) {
         return false;
     }
@@ -24,7 +24,7 @@ const isCallableArray = function isCallableArray(arg) {
  * @param {Array} arg
  * @returns {Function|BoundFunction}
  */
-const getCallableFromArray = function getCallableFromArray(arg) {
+global.getCallableFromArray = function getCallableFromArray(arg) {
     if (! isCallableArray(arg)) {
         throw new LogicException(arg + ' is not a callable array');
     }
@@ -34,6 +34,3 @@ const getCallableFromArray = function getCallableFromArray(arg) {
 
     return new BoundFunction(target, func);
 };
-
-global.isCallableArray = isCallableArray;
-global.getCallableFromArray = getCallableFromArray;

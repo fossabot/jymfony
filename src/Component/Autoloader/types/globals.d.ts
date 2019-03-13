@@ -184,3 +184,15 @@ declare class ReflectionMethod {
     readonly docblock: string;
 }
 
+declare class ReflectionException extends Error {}
+
+declare interface SymbolConstructor {
+    docblock: symbol;
+    reflection: symbol;
+}
+
+declare module NodeJS {
+    interface Global {
+        ReflectionClass: Newable<ReflectionClass<any>>;
+    }
+}

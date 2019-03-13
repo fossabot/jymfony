@@ -41,6 +41,15 @@ if (! __jymfony.Platform.hasModernRegex()) {
         }
 
         /**
+         * Check whether the instance argument is a regex.
+         *
+         * @param {*} instance
+         */
+        [Symbol.hasInstance](instance) {
+            return instance.constructor === RegExp || instance.constructor === __jymfony.RegExp;
+        }
+
+        /**
          * @param {string} string
          *
          * @returns {Object}

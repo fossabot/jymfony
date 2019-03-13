@@ -35,7 +35,7 @@ class Input extends implementationOf(StreamableInputInterface) {
         this._interactive = true;
 
         /**
-         * @type {stream.Readable}
+         * @type {NodeJS.ReadableStream}
          *
          * @private
          */

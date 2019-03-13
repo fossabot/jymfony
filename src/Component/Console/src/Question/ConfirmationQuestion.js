@@ -13,7 +13,7 @@ class ConfirmationQuestion extends Question {
      * @param {Jymfony.Component.Console.Output.OutputInterface} output
      * @param {string} question The question to ask to the user
      * @param {boolean} [defaultAnswer = true] The default answer to return, true or false
-     * @param {string} [trueAnswerRegex = /^y/i] A regex to match the "yes" answer
+     * @param {RegExp} [trueAnswerRegex = /^y/i] A regex to match the "yes" answer
      */
     __construct(input, output, question, defaultAnswer = true, trueAnswerRegex = /^y/i) {
         super.__construct(input, output);
@@ -22,7 +22,7 @@ class ConfirmationQuestion extends Question {
         this.defaultAnswer = defaultAnswer;
 
         /**
-         * @type {string}
+         * @type {RegExp}
          *
          * @private
          */
