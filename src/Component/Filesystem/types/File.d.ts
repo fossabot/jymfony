@@ -23,11 +23,6 @@ declare namespace Jymfony.Component.Filesystem {
 
         private _url: any;
 
-        /**
-         * @type {Jymfony.Component.Filesystem.StreamWrapper.StreamWrapperInterface}
-         *
-         * @protected
-         */
         protected _streamWrapper: StreamWrapperInterface;
 
         /**

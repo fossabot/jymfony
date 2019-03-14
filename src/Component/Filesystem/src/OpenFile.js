@@ -29,7 +29,7 @@ class OpenFile extends File {
             this._resource = await this._streamWrapper.streamOpen(this.filename, mode);
 
             return this;
-        });
+        })();
     }
 
     /**
