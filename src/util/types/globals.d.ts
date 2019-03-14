@@ -189,4 +189,5 @@ declare class EmptyIterator<T = any> implements Iterable<T> {
 interface ObjectConstructor {
     filter: <T>(obj: T, predicate: Invokable<boolean>) => T;
     ksort: <T>(obj: T) => T;
+    sort: <T>(obj: T) => T;
 }

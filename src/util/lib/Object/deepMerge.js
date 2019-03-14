@@ -3,7 +3,7 @@
 global.__jymfony = global.__jymfony || {};
 
 /**
- * @param {...} args
+ * @param {...*} args
  *
  * @returns {Object}
  */
