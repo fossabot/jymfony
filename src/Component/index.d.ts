@@ -14,4 +14,5 @@
 /// <reference path="DependencyInjection/types/index.d.ts" />
 /// <reference path="DevServer/types/index.d.ts" />
 /// <reference path="EventDispatcher/types/index.d.ts" />
+/// <reference path="Filesystem/types/index.d.ts" />
 /// <reference path="Logger/types/index.d.ts" />

@@ -1,4 +1,3 @@
-
 declare namespace Jymfony.Component.Autoloader.Parser {
     export class Patcher {
         readonly code: string;
