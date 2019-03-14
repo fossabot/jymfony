@@ -5,3 +5,4 @@
  */
 
 /// <reference lib="es2015" />
+/// <reference path="FrameworkBundle/types/index.d.ts" />

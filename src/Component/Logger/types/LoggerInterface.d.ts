@@ -17,7 +17,7 @@ declare namespace Jymfony.Component.Logger {
         /**
          * System is unusable.
          */
-        emergency(message: string, context: Record<string, any>): void;
+        emergency(message: string, context?: Record<string, any>): void;
 
         /**
          * Action must be taken immediately.
@@ -25,20 +25,20 @@ declare namespace Jymfony.Component.Logger {
          * Example: Entire website down, database unavailable, etc. This should
          * trigger the SMS alerts and wake you up.
          */
-        alert(message: string, context: Record<string, any>): void;
+        alert(message: string, context?: Record<string, any>): void;
 
         /**
          * Critical conditions.
          *
          * Example: Application component unavailable, unexpected exception.
          */
-        critical(message: string, context: Record<string, any>): void;
+        critical(message: string, context?: Record<string, any>): void;
 
         /**
          * Runtime errors that do not require immediate action but should typically
          * be logged and monitored.
          */
-        error(message: string, context: Record<string, any>): void;
+        error(message: string, context?: Record<string, any>): void;
 
         /**
          * Exceptional occurrences that are not errors.
@@ -46,28 +46,28 @@ declare namespace Jymfony.Component.Logger {
          * Example: Use of deprecated APIs, poor use of an API, undesirable things
          * that are not necessarily wrong.
          */
-        warning(message: string, context: Record<string, any>): void;
+        warning(message: string, context?: Record<string, any>): void;
 
         /**
          * Normal but significant events.
          */
-        notice(message: string, context: Record<string, any>): void;
+        notice(message: string, context?: Record<string, any>): void;
 
         /**
          * Interesting events.
          *
          * Example: User logs in, SQL logs.
          */
-        info(message: string, context: Record<string, any>): void;
+        info(message: string, context?: Record<string, any>): void;
 
         /**
          * Detailed debug information.
          */
-        debug(message: string, context: Record<string, any>): void;
+        debug(message: string, context?: Record<string, any>): void;
 
         /**
          * Logs with an arbitrary level.
          */
-        log(level: number, message: string, context: Record<string, any>): void;
+        log(level: number, message: string, context?: Record<string, any>): void;
     }
 }

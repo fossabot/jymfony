@@ -1,8 +1,8 @@
 declare namespace Jymfony.Component.DependencyInjection.ParameterBag {
     export class ParameterBag {
-        private _params: Record<string, any>;
-        private _env: Record<string, any>;
-        private _resolved: boolean;
+        protected _params: Record<string, any>;
+        protected _env: Record<string, any>;
+        protected _resolved: boolean;
 
         /**
          * Whether is resolved or not.
@@ -25,7 +25,7 @@ declare namespace Jymfony.Component.DependencyInjection.ParameterBag {
         /**
          * Gets a copy of the parameters map.
          */
-        all(): Map<string, any>;
+        all(): Record<string, any>;
 
         /**
          * Gets a parameter.
