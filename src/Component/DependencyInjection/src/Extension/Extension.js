@@ -72,7 +72,9 @@ class Extension extends implementationOf(ExtensionInterface) {
      * @param {Jymfony.Component.Config.Definition.ConfigurationInterface} configuration
      * @param {Object[]} configs
      *
-     * @returns {Object[]}
+     * @returns {Object}
+     *
+     * @protected
      */
     _processConfiguration(configuration, configs) {
         const processor = new Processor();

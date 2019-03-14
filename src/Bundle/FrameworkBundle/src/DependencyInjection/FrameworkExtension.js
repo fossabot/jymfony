@@ -143,7 +143,7 @@ class FrameworkExtension extends Extension {
     /**
      * @param {Jymfony.Component.DependencyInjection.ContainerBuilder} container
      * @param {string} name
-     * @param {PriorityQueue} handler
+     * @param {*} handler
      *
      * @returns {string}
      *

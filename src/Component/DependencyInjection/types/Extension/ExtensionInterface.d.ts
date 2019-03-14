@@ -8,17 +8,17 @@ declare namespace Jymfony.Component.DependencyInjection.Extension {
         /**
          * Namespace to be used for this extension.
          */
-        readonly namespace: string;
+        public readonly namespace: string;
 
         /**
          * Configuration alias.
          */
-        readonly alias: string;
+        public readonly alias: string;
 
         /**
          * Base path for the XSD files.
          */
-        readonly xsdValidationBasePath: string;
+        public readonly xsdValidationBasePath: string;
 
         /**
          * Loads a configuration.

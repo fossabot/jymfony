@@ -3,6 +3,10 @@
  * sequential access, insertions, and deletions in logarithmic time.
  */
 declare class BTree<K = any, V = any> extends Object implements Iterable<[K, V]> {
+    public static readonly COMPARISON_EQUAL = 0;
+    public static readonly COMPARISON_LESSER = -1;
+    public static readonly COMPARISON_GREATER = 1;
+
     /**
      * Comparison function can be defined passing it to cmp_function parameter.
      * The function should return 0 if elements are equals, 1 if the first argument
