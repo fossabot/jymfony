@@ -57,7 +57,7 @@ declare class HashTable<T = any> extends Object implements Iterable<T> {
     /**
      * Gets the value associated with key, if set.
      */
-    get(key: string|number): T|undefined;
+    get(key: string|number): T | undefined;
 
     /**
      * Returns if a key is present in the table.
@@ -67,23 +67,23 @@ declare class HashTable<T = any> extends Object implements Iterable<T> {
     /**
      * Removes an element from the collection.
      */
-    remove(key: string|number): T|undefined;
+    remove(key: string|number): T | undefined;
 
     /**
      * Returns an array or a literal object with all the elements
      * of the collection.
      */
-    toObject(): T[]|Record<string|number, T>;
+    toObject(): T[] | Record<string | number, T>;
 
     /**
      * Creates an HashTable from an object or array.
      */
-    static fromObject<T = any>(obj: T[]|Record<string|number, T>): HashTable<T>
+    static fromObject<T = any>(obj: T[] | Record<string | number, T>): HashTable<T>
 
     /**
      * Returns all the table keys (ordered).
      */
-    keys(): (string|number)[];
+    keys(): (string | number)[];
 
     /**
      * Gets an iterator for this hash table.
