@@ -1,4 +1,6 @@
 declare namespace Jymfony.Component.EventDispatcher {
+    export type EventSubscriptions = Record<string, string|[string, number]|[string, number][]>;
+
     export class EventSubscriberInterface implements MixinInterface {
         public static readonly definition: Newable<EventSubscriberInterface>;
 
@@ -19,6 +21,6 @@ declare namespace Jymfony.Component.EventDispatcher {
          *
          * @returns {Object} The events name to listen to
          */
-        static getSubscribedEvents(): Record<string, string|[string, number]|[string, number][]>;
+        static getSubscribedEvents(): EventSubscriptions;
     }
 }

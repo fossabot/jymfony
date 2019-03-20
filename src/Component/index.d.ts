@@ -15,4 +15,6 @@
 /// <reference path="DevServer/types/index.d.ts" />
 /// <reference path="EventDispatcher/types/index.d.ts" />
 /// <reference path="Filesystem/types/index.d.ts" />
+/// <reference path="HttpFoundation/types/index.d.ts" />
+/// <reference path="HttpServer/types/index.d.ts" />
 /// <reference path="Logger/types/index.d.ts" />
