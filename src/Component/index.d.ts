@@ -17,4 +17,6 @@
 /// <reference path="Filesystem/types/index.d.ts" />
 /// <reference path="HttpFoundation/types/index.d.ts" />
 /// <reference path="HttpServer/types/index.d.ts" />
+/// <reference path="Lexer/types/index.d.ts" />
 /// <reference path="Logger/types/index.d.ts" />
+/// <reference path="Mime/types/index.d.ts" />
