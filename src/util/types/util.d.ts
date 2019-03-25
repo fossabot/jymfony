@@ -167,7 +167,8 @@ declare namespace __jymfony {
     /**
      * Replace text within a portion of a string.
      */
-    function substr_replace(search: string|string[], replacement: string|string[], start: number|number[], length?: number|number[]): string|string[];
+    function substr_replace(search: string, replacement: string, start: number, length?: number): string;
+    function substr_replace(search: string[], replacement: string[], start: number[], length?: number[]): string[];
 
     /**
      * Trim characters at the end of a string.
