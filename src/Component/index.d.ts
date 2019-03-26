@@ -22,4 +22,5 @@
 /// <reference path="Logger/types/index.d.ts" />
 /// <reference path="Mime/types/index.d.ts" />
 /// <reference path="OptionsResolver/types/index.d.ts" />
+/// <reference path="PropertyAccess/types/index.d.ts" />
 /// <reference path="Routing/types/index.d.ts" />
