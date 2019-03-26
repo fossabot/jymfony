@@ -1,6 +1,7 @@
 global.__jymfony = global.__jymfony || {};
 
 let _asyncSupport = undefined;
+let _asyncGeneratorSupport = undefined;
 let _modernRegex = undefined;
 
 /**
@@ -36,13 +37,13 @@ class Platform {
      * @returns {boolean}
      */
     static hasAsyncGeneratorFunctionSupport() {
-        if (undefined === _asyncSupport) {
-            _asyncSupport = false;
+        if (undefined === _asyncGeneratorSupport) {
+            _asyncGeneratorSupport = false;
 
             try {
                 let fn;
                 eval('fn = async function * () { }');
-                _asyncSupport = 'AsyncGeneratorFunction' === (fn.constructor.name || fn.constructor.displayName);
+                _asyncGeneratorSupport = 'AsyncGeneratorFunction' === (fn.constructor.name || fn.constructor.displayName);
             } catch (e) {
                 if (!(e instanceof SyntaxError)) {
                     throw e;
@@ -50,7 +51,7 @@ class Platform {
             }
         }
 
-        return _asyncSupport;
+        return _asyncGeneratorSupport;
     }
 
     /**
