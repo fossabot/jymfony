@@ -8,6 +8,6 @@ declare namespace Jymfony.Component.DependencyInjection.Compiler {
         /**
          * Finds all services with the given tag name and order them by their priority.
          */
-        findAndSortTaggedServices(tagName: string, container: ContainerBuilder): Iterator<Reference[]>;
+        findAndSortTaggedServices(tagName: string, container: ContainerBuilder): IterableIterator<Reference>;
     }
 }

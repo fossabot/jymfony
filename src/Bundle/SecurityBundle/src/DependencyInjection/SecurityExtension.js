@@ -252,7 +252,7 @@ class SecurityExtension extends Extension {
      * @param {Jymfony.Component.DependencyInjection.ContainerBuilder} container
      * @param {string} name
      * @param {Object.<string, *>} firewall
-     * @param {Set<Jymfony.Component.Security.Authentication.Provider.AuthenticationProviderInterface[]>} authenticationProviders
+     * @param {Set<Jymfony.Component.Security.Authentication.Provider.AuthenticationProviderInterface>} authenticationProviders
      * @param {Object.<string, string>} providerIds
      * @param {string} configId
      *
@@ -344,7 +344,7 @@ class SecurityExtension extends Extension {
      * @param {Jymfony.Component.DependencyInjection.ContainerBuilder} container
      * @param {string} id
      * @param {Object.<string, *>} firewall
-     * @param {Set<Jymfony.Component.Security.Authentication.Provider.AuthenticationProviderInterface[]>} authenticationProviders
+     * @param {Set<Jymfony.Component.Security.Authentication.Provider.AuthenticationProviderInterface>} authenticationProviders
      * @param {string} defaultProvider
      * @param {Object.<string, string>} providerIds
      * @param {string} defaultEntryPoint

@@ -6,3 +6,4 @@
 
 /// <reference lib="es2015" />
 /// <reference path="FrameworkBundle/types/index.d.ts" />
+/// <reference path="SecurityBundle/types/index.d.ts" />

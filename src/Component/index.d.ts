@@ -25,4 +25,5 @@
 /// <reference path="PropertyAccess/types/index.d.ts" />
 /// <reference path="Routing/types/index.d.ts" />
 /// <reference path="Security/types/index.d.ts" />
+/// <reference path="Templating/types/index.d.ts" />
 /// <reference path="Testing/types/index.d.ts" />
