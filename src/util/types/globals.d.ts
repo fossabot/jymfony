@@ -1,4 +1,4 @@
-/// <reference lib="es2015" />
+/// <reference lib="esnext" />
 
 declare type int = number;
 declare type float = number;
@@ -19,6 +19,7 @@ declare interface Newable<T> {
     new(): T;
     new(...args: any[]): T;
 }
+declare type Constructor<T> = Function | { prototype: T };
 
 declare class MixinInterface {
     public static readonly definition: Newable<any>;
@@ -28,6 +29,7 @@ declare function getInterface<T = any>(definition: T): T & MixinInterface;
 declare function getTrait<T = any>(definition: T): T & MixinInterface;
 
 declare type AsyncFunction = (...args: any[]) => Promise<any>;
+declare type AsyncGeneratorFunction = (...args: any[]) => AsyncIterator<any>;
 
 declare module NodeJS {
     interface Global {
@@ -49,25 +51,25 @@ declare module NodeJS {
         }
 
         mix<T = any>(base: undefined): Newable<__jymfony.JObject>;
-        mix<T = any>(base: T): Newable<__jymfony.JObject & T>;
-        mix<T, I0>(base: undefined|T, iface: Newable<I0>): Newable<__jymfony.JObject & T & I0>;
-        mix<T, I0, I1>(base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>): Newable<__jymfony.JObject & T & I0 & I1>;
-        mix<T, I0, I1, I2>(base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>): Newable<__jymfony.JObject & T & I0 & I1 & I2>;
+        mix<T = any>(base: Constructor<T>): Newable<__jymfony.JObject & T>;
+        mix<T, I0>(base: undefined | Constructor<T>, iface: Newable<I0>): Newable<__jymfony.JObject & T & I0>;
+        mix<T, I0, I1>(base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>): Newable<__jymfony.JObject & T & I0 & I1>;
+        mix<T, I0, I1, I2>(base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>): Newable<__jymfony.JObject & T & I0 & I1 & I2>;
 
         mix<T, I0, I1, I2, I3>
-        (base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>):
+        (base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>):
             Newable<__jymfony.JObject & T & I0 & I1 & I2 & I3>;
         mix<T, I0, I1, I2, I3, I4>
-        (base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>):
+        (base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>):
             Newable<__jymfony.JObject & T & I0 & I1 & I2 & I3 & I4>;
         mix<T, I0, I1, I2, I3, I4, I5>
-        (base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>, interface5: Newable<I5>):
+        (base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>, interface5: Newable<I5>):
             Newable<__jymfony.JObject & T & I0 & I1 & I2 & I3 & I4 & I5>;
         mix<T, I0, I1, I2, I3, I4, I5, I6>
-        (base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>, interface5: Newable<I5>, interface6: Newable<I6>):
+        (base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>, interface5: Newable<I5>, interface6: Newable<I6>):
             Newable<__jymfony.JObject & T & I0 & I1 & I2 & I3 & I4 & I5 & I6>;
         mix<T>
-        (base: undefined|T, ...interfacesAndTraits: any[]): Newable<__jymfony.JObject & T & any>;
+        (base: undefined | Constructor<T>, ...interfacesAndTraits: any[]): Newable<__jymfony.JObject & T & any>;
 
         implementationOf<I0>(iface: Newable<I0>): Newable<__jymfony.JObject & I0>;
         implementationOf<I0, I1>(interface0: Newable<I0>, interface1: Newable<I1>): Newable<__jymfony.JObject & I0 & I1>;
@@ -87,19 +89,33 @@ declare module NodeJS {
             Newable<__jymfony.JObject & I0 & I1 & I2 & I3 & I4 & I5 & I6>;
         implementationOf(...interfacesAndTraits: any[]): Newable<__jymfony.JObject & any>;
 
-        isGenerator(value: any): boolean;
-        isGeneratorFunction(value: any): boolean;
-        isAsyncFunction(value: any): boolean;
-        isFunction(value: any): boolean;
-        isArray(value: any): boolean;
-        isBuffer(value: any): boolean;
-        isObject(value: any): boolean;
-        isScalar(value: any): boolean;
-        isObjectLiteral(value: any): boolean;
-        isPromise(value: any): boolean;
-        isStream(value: any): boolean;
-        isCallableArray(value: any): boolean;
-        getCallableFromArray(value: any): Function;
+
+        isArguments(value: any): value is IArguments;
+        isBoolean(value: any): value is boolean;
+        isString(value: any): value is string;
+        isNumber(value: any): value is number;
+        isDate(value: any): value is Date;
+        isRegExp(value: any): value is RegExp;
+        isError(value: any): value is Error;
+        isSymbol(value: any): value is symbol;
+        isMap(value: any): value is Map<any, any>;
+        isWeakMap(value: any): value is WeakMap<any, any>;
+        isSet(value: any): value is Set<any>;
+        isWeakSet(value: any): value is WeakSet<any>;
+
+        isGenerator(value: any): value is Generator;
+        isGeneratorFunction(value: any): value is GeneratorFunction | AsyncGeneratorFunction;
+        isAsyncFunction(value: any): value is AsyncFunction;
+        isFunction(value: any): value is Invokable;
+        isArray(value: any): value is Array<any>;
+        isBuffer(value: any): value is Buffer;
+        isObject(value: any): value is object;
+        isScalar(value: any): value is string | boolean | number;
+        isObjectLiteral(value: any): value is Object;
+        isPromise(value: any): value is Promise<any>;
+        isStream(value: any): value is NodeJS.ReadableStream | NodeJS.WritableStream;
+        isCallableArray(value: any): value is [string, string];
+        getCallableFromArray(value: [string, string]): Invokable<any>;
     }
 }
 
@@ -113,25 +129,25 @@ declare type Invokable<T = any> = (...args: any[]) => T | {
 };
 
 declare function mix<T = any>(base: undefined): Newable<__jymfony.JObject>;
-declare function mix<T = any>(base: T): Newable<__jymfony.JObject & T>;
-declare function mix<T, I0>(base: undefined|T, iface: Newable<I0>): Newable<__jymfony.JObject & T & I0>;
-declare function mix<T, I0, I1>(base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>): Newable<__jymfony.JObject & T & I0 & I1>;
-declare function mix<T, I0, I1, I2>(base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>): Newable<__jymfony.JObject & T & I0 & I1 & I2>;
+declare function mix<T = any>(base: Constructor<T>): Newable<__jymfony.JObject & T>;
+declare function mix<T, I0>(base: undefined | Constructor<T>, iface: Newable<I0>): Newable<__jymfony.JObject & T & I0>;
+declare function mix<T, I0, I1>(base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>): Newable<__jymfony.JObject & T & I0 & I1>;
+declare function mix<T, I0, I1, I2>(base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>): Newable<__jymfony.JObject & T & I0 & I1 & I2>;
 
 declare function mix<T, I0, I1, I2, I3>
-(base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>):
+(base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>):
     Newable<__jymfony.JObject & T & I0 & I1 & I2 & I3>;
 declare function mix<T, I0, I1, I2, I3, I4>
-(base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>):
+(base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>):
     Newable<__jymfony.JObject & T & I0 & I1 & I2 & I3 & I4>;
 declare function mix<T, I0, I1, I2, I3, I4, I5>
-(base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>, interface5: Newable<I5>):
+(base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>, interface5: Newable<I5>):
     Newable<__jymfony.JObject & T & I0 & I1 & I2 & I3 & I4 & I5>;
 declare function mix<T, I0, I1, I2, I3, I4, I5, I6>
-(base: undefined|T, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>, interface5: Newable<I5>, interface6: Newable<I6>):
+(base: undefined | Constructor<T>, interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>, interface5: Newable<I5>, interface6: Newable<I6>):
     Newable<__jymfony.JObject & T & I0 & I1 & I2 & I3 & I4 & I5 & I6>;
 declare function mix<T>
-(base: undefined|T, ...interfacesAndTraits: any[]): Newable<__jymfony.JObject & T & any>;
+(base: undefined | Constructor<T>, ...interfacesAndTraits: any[]): Newable<__jymfony.JObject & T & any>;
 
 declare function implementationOf<I0>(iface: Newable<I0>): Newable<__jymfony.JObject & I0>;
 declare function implementationOf<I0, I1>(interface0: Newable<I0>, interface1: Newable<I1>): Newable<__jymfony.JObject & I0 & I1>;
@@ -151,35 +167,45 @@ declare function implementationOf<I0, I1, I2, I3, I4, I5, I6>
     Newable<__jymfony.JObject & I0 & I1 & I2 & I3 & I4 & I5 & I6>;
 declare function implementationOf(...interfacesAndTraits: any[]): Newable<__jymfony.JObject & any>;
 
-declare function isArguments(value: any): boolean;
-declare function isBoolean(value: any): boolean;
-declare function isString(value: any): boolean;
-declare function isNumber(value: any): boolean;
-declare function isDate(value: any): boolean;
-declare function isRegExp(value: any): boolean;
-declare function isError(value: any): boolean;
-declare function isSymbol(value: any): boolean;
-declare function isMap(value: any): boolean;
-declare function isWeakMap(value: any): boolean;
-declare function isSet(value: any): boolean;
-declare function isWeakSet(value: any): boolean;
+declare function isArguments(value: any): value is IArguments;
+declare function isBoolean(value: any): value is boolean;
+declare function isString(value: any): value is string;
+declare function isNumber(value: any): value is number;
+declare function isDate(value: any): value is Date;
+declare function isRegExp(value: any): value is RegExp;
+declare function isError(value: any): value is Error;
+declare function isSymbol(value: any): value is symbol;
+declare function isMap(value: any): value is Map<any, any>;
+declare function isWeakMap(value: any): value is WeakMap<any, any>;
+declare function isSet(value: any): value is Set<any>;
+declare function isWeakSet(value: any): value is WeakSet<any>;
 
-declare function isGenerator(value: any): boolean;
-declare function isGeneratorFunction(value: any): boolean;
-declare function isAsyncFunction(value: any): boolean;
-declare function isFunction(value: any): boolean;
-declare function isArray(value: any): boolean;
-declare function isBuffer(value: any): boolean;
-declare function isObject(value: any): boolean;
-declare function isScalar(value: any): boolean;
-declare function isObjectLiteral(value: any): boolean;
-declare function isPromise(value: any): boolean;
-declare function isStream(value: any): boolean;
-declare function isCallableArray(value: any): boolean;
-declare function getCallableFromArray(value: any): Function;
+declare function isGenerator(value: any): value is Generator;
+declare function isGeneratorFunction(value: any): value is GeneratorFunction | AsyncGeneratorFunction;
+declare function isAsyncFunction(value: any): value is AsyncFunction;
+declare function isFunction(value: any): value is Invokable;
+declare function isArray(value: any): value is Array<any>;
+declare function isBuffer(value: any): value is Buffer;
+declare function isObject(value: any): value is object;
+declare function isScalar(value: any): value is string | boolean | number;
+declare function isObjectLiteral(value: any): value is Object;
+declare function isPromise(value: any): value is Promise<any>;
+declare function isStream(value: any): value is NodeJS.ReadableStream | NodeJS.WritableStream;
+declare function isCallableArray(value: any): value is [string, string];
+declare function getCallableFromArray(value: [string, string]): Invokable<any>;
 
-declare class BoundFunction {
+declare class BoundFunction implements Function {
     new(thisArg: Object, func: Invokable|Function|GeneratorFunction): Function;
+
+    arguments: any;
+    caller: Function;
+    readonly length: number;
+    readonly name: string;
+    prototype: any;
+    [Symbol.hasInstance](value: any): boolean;
+    apply(thisArg: any, argArray?: any): any;
+    bind(thisArg: any, ...argArray: any[]): any;
+    call(thisArg: any, ...argArray: any[]): any;
 }
 
 declare class EmptyIterator<T = any> implements Iterable<T> {

@@ -1,15 +1,16 @@
 declare namespace Jymfony.Component.Config.Definition.Builder {
-    export class ArrayNodeDefinition extends mix(NodeDefinition, ParentNodeDefinitionInterface) implements ParentNodeDefinitionInterface {
+    export class ArrayNodeDefinition<T extends NodeDefinition = any>
+        extends mix<NodeDefinition, ParentNodeDefinitionInterface>(NodeDefinition, ParentNodeDefinitionInterface) {
         protected _performDeepMerging: boolean;
         protected _ignoreExtraKeys: boolean;
         protected _removeExtraKeys: boolean;
-        protected _children: Record<string, NodeBuilder>;
-        protected _prototype?: NodeDefinition;
+        protected _children: Record<string, NodeBuilder<this>>;
+        protected _prototype?: NodeDefinition<this>;
         protected _atLeastOne: boolean;
         protected _allowNewKeys: boolean;
         protected _addDefaults: boolean;
         protected _addDefaultChildren: boolean;
-        protected _nodeBuilder?: NodeBuilder;
+        protected _nodeBuilder?: NodeBuilder<this>;
         private _key?: string;
         private _removeKeyItem?: boolean;
         private _normalizeKeys: boolean;
@@ -17,30 +18,30 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
         /**
          * Constructor.
          */
-        __construct(name: string, parent?: NodeParentInterface): void;
-        constructor(name: string, parent?: NodeParentInterface);
+        __construct(name: string, parent?: T): void;
+        constructor(name: string, parent?: T);
 
         /**
          * Sets a custom children builder.
          */
-        setBuilder(builder: NodeBuilder): void;
+        setBuilder(builder: NodeBuilder<this>): void;
 
         /**
          * Returns a builder to add children nodes.
          */
-        children(): NodeBuilder;
+        children(): NodeBuilder<this>;
 
         /**
          * Sets a prototype for child nodes.
          */
-        prototype(type: string): NodeDefinition;
-        variablePrototype(): VariableNodeDefinition;
-        scalarPrototype(): ScalarNodeDefinition;
-        booleanPrototype(): BooleanNodeDefinition;
-        integerPrototype(): IntegerNodeDefinition;
-        floatPrototype(): FloatNodeDefinition;
-        arrayPrototype(): ArrayNodeDefinition;
-        enumPrototype(): EnumNodeDefinition;
+        prototype(type: string): NodeDefinition<this>;
+        variablePrototype(): VariableNodeDefinition<this>;
+        scalarPrototype(): ScalarNodeDefinition<this>;
+        booleanPrototype(): BooleanNodeDefinition<this>;
+        integerPrototype(): IntegerNodeDefinition<this>;
+        floatPrototype(): FloatNodeDefinition<this>;
+        arrayPrototype(): ArrayNodeDefinition<this>;
+        enumPrototype(): EnumNodeDefinition<this>;
 
         /**
          * Adds the default value if the node is not set in the configuration.
@@ -49,7 +50,7 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
          * If this function has been called and the node is not set during the finalization
          * phase, it's default value will be derived from its children default values.
          */
-        addDefaultsIfNotSet(): ArrayNodeDefinition;
+        addDefaultsIfNotSet(): this;
 
         /**
          * Adds children with a default value when none are defined.
@@ -58,19 +59,19 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
          *
          * @param children The number of children|The child name|The children names to be added
          */
-        addDefaultChildrenIfNoneSet(children?: number|string|string|null|undefined): ArrayNodeDefinition;
+        addDefaultChildrenIfNoneSet(children?: number | string | string | null | undefined): this;
 
         /**
          * Requires the node to have at least one element.
          * This method is applicable to prototype nodes only.
          */
-        requiresAtLeastOneElement(): ArrayNodeDefinition;
+        requiresAtLeastOneElement(): this;
 
         /**
          * Disallows adding news keys in a subsequent configuration.
          * If used all keys have to be defined in the same configuration file.
          */
-        disallowNewKeysInSubsequentConfigs(): ArrayNodeDefinition;
+        disallowNewKeysInSubsequentConfigs(): this;
 
         /**
          * Sets the attribute which value is to be used as key.
@@ -98,12 +99,12 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
          * @param name The name of the key
          * @param [removeKeyItem = true] Whether or not the key item should be removed
          */
-        useAttributeAsKey(name: string, removeKeyItem?: boolean): ArrayNodeDefinition;
+        useAttributeAsKey(name: string, removeKeyItem?: boolean): this;
 
         /**
          * Sets whether the node can be unset.
          */
-        canBeUnset(allow?: boolean): ArrayNodeDefinition;
+        canBeUnset(allow?: boolean): this;
 
         /**
          * Adds an "enabled" boolean to enable the current section.
@@ -118,18 +119,18 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
          * enableableArrayNode: {enabled: false, ...}  # The config is disabled
          * enableableArrayNode: false                  # The config is disabled
          */
-        canBeEnabled(): ArrayNodeDefinition;
+        canBeEnabled(): this;
 
         /**
          * Adds an "enabled" boolean to enable the current section.
          * By default, the section is enabled.
          */
-        canBeDisabled(): ArrayNodeDefinition;
+        canBeDisabled(): this;
 
         /**
          * Disables the deep merging of the node.
          */
-        performNoDeepMerging(): ArrayNodeDefinition;
+        performNoDeepMerging(): this;
 
         /**
          * Allows extra config keys to be specified under an array without
@@ -142,14 +143,14 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
          *
          * @param [remove = true] Whether to remove the extra keys
          */
-        ignoreExtraKeys(remove?: boolean): ArrayNodeDefinition;
+        ignoreExtraKeys(remove?: boolean): this;
 
         /**
          * Sets key normalization.
          *
          * @param bool Whether to enable key normalization
          */
-        normalizeKeys(bool: boolean): ArrayNodeDefinition;
+        normalizeKeys(bool: boolean): this;
 
         /**
          * Appends a node definition.
@@ -162,7 +163,7 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
          *         .append(this.getBarNodeDefinition())
          *     ;
          */
-        append(node: NodeParentInterface): ParentNodeDefinitionInterface;
+        append(node: NodeParentInterface): this;
 
         /**
          * Returns a node builder to be used to add children and prototype.
@@ -179,13 +180,13 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
          *
          * @throws {Jymfony.Component.Config.Definition.Exception.InvalidDefinitionException}
          */
-        validateConcreteNode(node: NodeDefinition): void;
+        validateConcreteNode(node: NodeDefinition<this>): void;
 
         /**
          * Validate the configuration of a prototype node.
          *
          * @throws {Jymfony.Component.Config.Definition.Exception.InvalidDefinitionException}
          */
-        validatePrototypeNode(node: NodeDefinition): void;
+        validatePrototypeNode(node: NodeDefinition<this>): void;
     }
 }

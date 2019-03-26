@@ -75,8 +75,8 @@ declare namespace Jymfony.Component.HttpFoundation {
         /**
          * Constructor.
          */
-        __construct(content?: string, status?: number, headers?: Record<string, string | string[]>): void;
-        constructor(content?: string, status?: number, headers?: Record<string, string | string[]>);
+        __construct(content?: string | Buffer, status?: number, headers?: Record<string, string | string[]>): void;
+        constructor(content?: string | Buffer, status?: number, headers?: Record<string, string | string[]>);
 
         /**
          * Is response invalid?
@@ -186,7 +186,7 @@ declare namespace Jymfony.Component.HttpFoundation {
          *
          * @final
          */
-        setPrivate(): Response;
+        setPrivate(): this;
 
         /**
          * Marks the response as "public".
@@ -195,14 +195,14 @@ declare namespace Jymfony.Component.HttpFoundation {
          *
          * @final
          */
-        setPublic(): Response;
+        setPublic(): this;
 
         /**
          * Marks the response as "immutable".
          *
          * @final
          */
-        setImmutable(immutable?: boolean): Response;
+        setImmutable(immutable?: boolean): this;
 
         /**
          * Returns true if the response is marked as "immutable".
@@ -238,7 +238,7 @@ declare namespace Jymfony.Component.HttpFoundation {
          *
          * @final
          */
-        setDate(date: DateTime): Response;
+        setDate(date: DateTime): this;
 
         /**
          * Returns the age of the response in seconds.
@@ -257,7 +257,7 @@ declare namespace Jymfony.Component.HttpFoundation {
          *
          * @final
          */
-        public readonly expires: DateTime | undefined;
+        public readonly expires: this | undefined;
 
         /**
          * Sets the Expires HTTP header with a DateTime instance.
@@ -266,7 +266,7 @@ declare namespace Jymfony.Component.HttpFoundation {
          *
          * @final
          */
-        setExpires(date?: DateTime | number | undefined): Response;
+        setExpires(date?: DateTime | number | undefined): this;
 
         /**
          * Returns the number of seconds after the time specified in the response's Date
@@ -286,7 +286,7 @@ declare namespace Jymfony.Component.HttpFoundation {
          *
          * @final
          */
-        setMaxAge(value: number): Response;
+        setMaxAge(value: number): this;
 
         /**
          * Sets the number of seconds after which the response should no longer be considered fresh by shared caches.
@@ -295,7 +295,7 @@ declare namespace Jymfony.Component.HttpFoundation {
          *
          * @final
          */
-        setSharedMaxAge(value: number): Response;
+        setSharedMaxAge(value: number): this;
 
         /**
          * Returns the response's time-to-live in seconds.
@@ -316,7 +316,7 @@ declare namespace Jymfony.Component.HttpFoundation {
          *
          * @final
          */
-        setTtl(seconds: number): Response;
+        setTtl(seconds: number): this;
 
         /**
          * Sets the response's time-to-live for private/client caches in seconds.
@@ -325,7 +325,7 @@ declare namespace Jymfony.Component.HttpFoundation {
          *
          * @final
          */
-        setClientTtl(seconds: number): Response;
+        setClientTtl(seconds: number): this;
 
         /**
          * The Last-Modified HTTP header as a DateTime instance.
@@ -351,7 +351,7 @@ declare namespace Jymfony.Component.HttpFoundation {
          *
          * @final
          */
-        setEtag(etag?: string | undefined, weak?: boolean): Response;
+        setEtag(etag?: string | undefined, weak?: boolean): this;
 
         /**
          * Returns true if the response includes a Vary header.
@@ -375,7 +375,7 @@ declare namespace Jymfony.Component.HttpFoundation {
          *
          * @final
          */
-        setVary(headers: string | string[], replace?: boolean): Response;
+        setVary(headers: string | string[], replace?: boolean): this;
 
         /**
          * The response charset.
@@ -398,7 +398,7 @@ declare namespace Jymfony.Component.HttpFoundation {
          * compliant with RFC 2616. Most of the changes are based on
          * the Request that is "associated" with this Response.
          */
-        prepare(request: Request): Promise<Response>;
+        prepare(request: Request): Promise<this>;
 
         /**
          * Sends the response through the given ServerResponse object.

@@ -1,19 +1,15 @@
-const AbstractParser = Jymfony.Component.HttpServer.RequestParser.AbstractParser;
+declare namespace Jymfony.Component.HttpServer.RequestParser {
+    import UploadedFile = Jymfony.Component.HttpFoundation.File.UploadedFile;
 
-/**
- * @memberOf Jymfony.Component.HttpServer.RequestParser
- *
- * @internal
- *
- * @final
- */
-class OctetStreamParser extends AbstractParser {
     /**
-     * @inheritdoc
+     * @internal
+     *
+     * @final
      */
-    decode() {
-        return {};
+    export class OctetStreamParser extends AbstractParser {
+        /**
+         * @inheritdoc
+         */
+        decode(): Record<string, any | UploadedFile>[];
     }
 }
-
-module.exports = OctetStreamParser;

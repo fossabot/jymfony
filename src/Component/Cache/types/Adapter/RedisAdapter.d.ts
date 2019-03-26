@@ -12,6 +12,7 @@ declare namespace Jymfony.Component.Cache.Adapter {
         /**
          * Constructor.
          */
+        // @ts-ignore
         __construct(redisClient: any, namespace?: string, defaultLifetime?: number): void;
         constructor(redisClient: any, namespace?: string, defaultLifetime?: number);
 

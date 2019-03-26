@@ -49,7 +49,7 @@ class SecurityExtension extends Extension {
      * @param {Jymfony.Component.DependencyInjection.ContainerBuilder} container
      */
     load(configs, container) {
-        const configuration = this.getConfiguration(container);
+        const configuration = this.getConfiguration(configs, container);
         configuration.userProviderFactories = this._userProviderFactories;
         configuration.factories = this._factories;
 
@@ -475,10 +475,8 @@ class SecurityExtension extends Extension {
                 access.ips
             );
 
-            const attributes = access.roles;
-
             container.getDefinition(Jymfony.Component.Security.Authorization.AccessMap)
-                .addMethodCall('add', [ matcher, attributes, access.requires_channel ]);
+                .addMethodCall('add', [ matcher, access.roles, access.requires_channel ]);
         }
     }
 

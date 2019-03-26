@@ -61,12 +61,12 @@ declare namespace Jymfony.Component.Filesystem.StreamWrapper {
         /**
          * Creates a readable stream from an opened file.
          */
-        createReadableStream(resource: any): ReadableStream;
+        createReadableStream(resource: any): NodeJS.ReadableStream;
 
         /**
          * Creates a writable stream from an opened file.
          */
-        createWritableStream(resource: any): WritableStream;
+        createWritableStream(resource: any): NodeJS.WritableStream;
 
         /**
          * Reads some bytes from the given resource.

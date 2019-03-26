@@ -38,18 +38,18 @@ declare namespace Jymfony.Component.Console.Question.Builder {
         /**
          * Sets the question type.
          */
-        setType(type: string): QuestionBuilder;
+        setType(type: string): this;
 
         /**
          * Sets the prompt shown to the user.
          */
-        setPrompt(prompt: string): QuestionBuilder;
+        setPrompt(prompt: string): this;
 
         /**
          * Sets the normalizer for the question value.
          * NOTE that it will be called before input validation.
          */
-        setNormalizer(normalizer: undefined|Invokable<any>): QuestionBuilder;
+        setNormalizer(normalizer: undefined|Invokable<any>): this;
 
         /**
          * Sets the validator function.
@@ -57,17 +57,17 @@ declare namespace Jymfony.Component.Console.Question.Builder {
          * In case another exception or error is thrown it will be propagated
          * to the Application.
          */
-        setValidator(validator: Invokable<void>): QuestionBuilder;
+        setValidator(validator: Invokable<void>): this;
 
         /**
          * Sets the iterable for the autocomplete values.
          */
-        setAutocompleteValues(autocompleterValues: string[]|Iterable<string>): QuestionBuilder;
+        setAutocompleteValues(autocompleterValues: string[]|Iterable<string>): this;
 
         /**
          * Sets the default answer for the question.
          */
-        setDefault(defaultAnswer: any): QuestionBuilder;
+        setDefault(defaultAnswer: any): this;
 
         /**
          * Builds the Question object.

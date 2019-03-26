@@ -25,7 +25,7 @@ class Extension extends implementationOf(ExtensionInterface) {
     /**
      * @inheritdoc
      */
-    getConfiguration() {
+    getConfiguration(configs, container) { // eslint-disable-line no-unused-vars
         const reflClass = new ReflectionClass(this);
 
         const nsName = reflClass.namespaceName;

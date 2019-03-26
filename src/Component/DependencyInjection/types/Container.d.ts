@@ -54,22 +54,22 @@ declare namespace Jymfony.Component.DependencyInjection {
         /**
          * Sets a service.
          */
-        set(id: string|symbol|Function, service: any): void;
+        set(id: string | symbol | Function, service: any): void;
 
         /**
          * Checks if a service is defined.
          */
-        has(id: string|symbol|Function): boolean;
+        has(id: string | symbol | Function): boolean;
 
         /**
          * Gets a service.
          */
-        get(id: string|symbol|Function, invalidBehavior?: number): any;
+        get(id: string | symbol | Function, invalidBehavior?: number): any;
 
         /**
          * Checks if a given service has been initialized.
          */
-        initialized(id: string|symbol|Function): boolean;
+        initialized(id: string | symbol | Function): boolean;
 
         /**
          * Executes all the shutdown functions.
@@ -94,7 +94,7 @@ declare namespace Jymfony.Component.DependencyInjection {
         /**
          * Normalizes a class definition (Function) to its class name.
          */
-        static normalizeId(id: string|symbol|Function): string;
+        static normalizeId(id: string | symbol | Function): string;
 
         /**
          * Underscorizes a string.

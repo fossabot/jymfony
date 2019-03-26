@@ -11,6 +11,7 @@ declare namespace Jymfony.Component.HttpServer.Http2 {
         enableConnectProtocol?: boolean,
     }
 
+    // @ts-ignore
     export class HttpServer extends BaseServer {
         private _options: ServerOptions;
 

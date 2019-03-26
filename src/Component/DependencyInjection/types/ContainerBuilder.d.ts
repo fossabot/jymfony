@@ -59,14 +59,14 @@ declare namespace Jymfony.Component.DependencyInjection {
         /**
          * Adds a resource for this configuration.
          */
-        addResource(resource: ResourceInterface): ContainerBuilder;
+        addResource(resource: ResourceInterface): this;
 
         /**
          * Adds the object class hierarchy as resources.
          *
          * @param object An object instance
          */
-        addObjectResource(object: any): ContainerBuilder;
+        addObjectResource(object: any): this;
 
         /**
          * Retrieves the requested reflection class and registers it for resource tracking.
@@ -80,17 +80,17 @@ declare namespace Jymfony.Component.DependencyInjection {
         /**
          * Adds the given class hierarchy as resources.
          */
-        addClassResource(reflClass: ReflectionClass): ContainerBuilder;
+        addClassResource(reflClass: ReflectionClass): this;
 
         /**
          * Loads the configuration for an extension.
          */
-        loadFromExtension(extension: string, values?: Record<string, any>): ContainerBuilder;
+        loadFromExtension(extension: string, values?: Record<string, any>): this;
 
         /**
          * Adds a compilation pass.
          */
-        addCompilerPass(pass: CompilerPassInterface, type?: string, priority?: number): ContainerBuilder;
+        addCompilerPass(pass: CompilerPassInterface, type?: string, priority?: number): this;
 
         /**
          * Gets the compiler.

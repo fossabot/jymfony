@@ -4,16 +4,16 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
     /**
      * This class provides a fluent interface for defining a node.
      */
-    export abstract class NodeDefinition extends implementationOf(NodeParentInterface) {
-        protected _parent: NodeParentInterface;
+    export abstract class NodeDefinition<T extends NodeDefinition = any> extends implementationOf(NodeParentInterface) {
+        protected _parent: T;
         protected _name: string;
-        protected _normalization?: NormalizationBuilder;
-        protected _validation?: ValidationBuilder;
+        protected _normalization?: NormalizationBuilder<this>;
+        protected _validation?: ValidationBuilder<this>;
         protected _default: any;
         protected _isDefault: boolean;
         protected _required: boolean;
         protected _deprecationMessage?: string;
-        protected _merge?: MergeBuilder;
+        protected _merge?: MergeBuilder<this>;
         protected _allowEmptyValue: boolean;
         protected _nullEquivalent: any;
         protected _trueEquivalent: any;
@@ -23,37 +23,37 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
         /**
          * Constructor.
          */
-        __construct(name: string, parent?: NodeParentInterface): void;
-        constructor(name: string, parent?: NodeParentInterface);
+        __construct(name: string, parent?: T): void;
+        constructor(name: string, parent?: T);
 
         /**
          * Sets the parent node.
          */
-        setParent(parent: NodeParentInterface): NodeDefinition;
+        setParent(parent: T): this;
 
         /**
          * Sets info message.
          *
          * @param info The info text
          */
-        info(info: string): NodeDefinition;
+        info(info: string): this;
 
         /**
          * Sets example configuration.
          *
          * @param example
          */
-        example(example: any): NodeDefinition;
+        example(example: any): this;
 
         /**
          * Sets an attribute on the node.
          */
-        attribute(key: string, value: any): NodeDefinition;
+        attribute(key: string, value: any): this;
 
         /**
          * Returns the parent node.
          */
-        end(): NodeParentInterface|undefined;
+        end(): T;
 
         /**
          * Creates the node.
@@ -67,12 +67,12 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
          *
          * @param value The default value
          */
-        defaultValue(value: any): NodeDefinition;
+        defaultValue(value: any): this;
 
         /**
          * Sets the node as required.
          */
-        isRequired(): NodeDefinition
+        isRequired(): this
 
         /**
          * Sets the node as deprecated.
@@ -82,52 +82,52 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
          *
          * @param [message = 'The child node "%node%" at path "%path%" is deprecated.'] Deprecation message
          */
-        setDeprecated(message?: string): NodeDefinition;
+        setDeprecated(message?: string): this;
 
         /**
          * Sets the equivalent value used when the node contains null.
          */
-        treatNullLike(value: any): NodeDefinition;
+        treatNullLike(value: any): this;
 
         /**
          * Sets the equivalent value used when the node contains true.
          */
-        treatTrueLike(value: any): NodeDefinition;
+        treatTrueLike(value: any): this;
 
         /**
          * Sets the equivalent value used when the node contains false.
          */
-        treatFalseLike(value: any): NodeDefinition;
+        treatFalseLike(value: any): this;
 
         /**
          * Sets null as the default value.
          */
-        defaultNull(): NodeDefinition;
+        defaultNull(): this;
 
         /**
          * Sets undefined as the default value.
          */
-        defaultUndefined(): NodeDefinition;
+        defaultUndefined(): this;
 
         /**
          * Sets true as the default value.
          */
-        defaultTrue(): NodeDefinition;
+        defaultTrue(): this;
 
         /**
          * Sets false as the default value.
          */
-        defaultFalse(): NodeDefinition;
+        defaultFalse(): this;
 
         /**
          * Sets an expression to run before the normalization.
          */
-        beforeNormalization(): ExprBuilder;
+        beforeNormalization(): ExprBuilder<this>;
 
         /**
          * Denies the node value being empty.
          */
-        cannotBeEmpty(): NodeDefinition;
+        cannotBeEmpty(): this;
 
         /**
          * Sets an expression to run for the validation.
@@ -135,29 +135,29 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
          * The expression receives the value of the node and must return it. It can modify it.
          * An exception should be thrown when the node is not valid.
          */
-        validate(): ExprBuilder;
+        validate(): ExprBuilder<this>;
 
         /**
          * Sets whether the node can be overwritten.
          *
          * @param [deny = true] Whether the overwriting is forbidden or not
          */
-        cannotBeOverwritten(deny?: boolean): NodeDefinition;
+        cannotBeOverwritten(deny?: boolean): this;
 
         /**
          * Gets the builder for validation rules.
          */
-        protected validation(): ValidationBuilder;
+        protected validation(): ValidationBuilder<this>;
 
         /**
          * Gets the builder for merging rules.
          */
-        protected merge(): MergeBuilder;
+        protected merge(): MergeBuilder<this>;
 
         /**
          * Gets the builder for normalization rules.
          */
-        protected normalization(): NormalizationBuilder;
+        protected normalization(): NormalizationBuilder<this>;
 
         /**
          * Instantiate and configure the node according to this definition.

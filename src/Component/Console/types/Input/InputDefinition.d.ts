@@ -10,28 +10,28 @@ declare namespace Jymfony.Component.Console.Input {
         /**
          * Constructor.
          */
-        __construct(definition: (InputArgument|InputOption)[]): void;
-        constructor(definition: (InputArgument|InputOption)[]);
+        __construct(definition: (InputArgument | InputOption)[]): void;
+        constructor(definition: (InputArgument | InputOption)[]);
 
         /**
          * Sets the input definition.
          */
-        setDefinition(definition: (InputArgument|InputOption)[]): void;
+        setDefinition(definition: (InputArgument | InputOption)[]): void;
 
         /**
          * Sets arguments for this definition.
          */
-        setArguments(args?: InputArgument[]|undefined);
+        setArguments(args?: InputArgument[] | undefined): void;
 
         /**
          * Adds arguments to the definition.
          */
-        addArguments(args: InputArgument[]): InputDefinition;
+        addArguments(args: InputArgument[]): this;
 
         /**
          * Adds an argument.
          */
-        addArgument(argument: InputArgument): InputDefinition;
+        addArgument(argument: InputArgument): this;
 
         /**
          * Gets an argument by name or index.
@@ -66,12 +66,12 @@ declare namespace Jymfony.Component.Console.Input {
         /**
          * Add input options.
          */
-        addOptions(options: InputOption[]): void;
+        addOptions(options: InputOption[]): this;
 
         /**
          * Adds an option.
          */
-        addOption(option: InputOption): InputDefinition;
+        addOption(option: InputOption): this;
 
         /**
          * Returns an input option by name.

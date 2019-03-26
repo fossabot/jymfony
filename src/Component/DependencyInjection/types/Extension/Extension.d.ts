@@ -29,9 +29,9 @@ declare namespace Jymfony.Component.DependencyInjection.Extension {
         constructor();
 
         /**
-         * @inheritdoc
+         * Returns the extension configuration object.
          */
-        getConfiguration(): ConfigurationInterface;
+        getConfiguration(config: any[], container: ContainerBuilder): ConfigurationInterface;
 
         protected _processConfiguration(configuration: ConfigurationInterface, configs: any[]): any;
 

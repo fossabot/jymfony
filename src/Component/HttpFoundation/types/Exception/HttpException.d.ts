@@ -10,6 +10,7 @@ declare namespace Jymfony.Component.HttpFoundation.Exception {
         /**
          * Constructor.
          */
+        // @ts-ignore
         __construct(statusCode: number, message: string, previous?: Error, headers?: Record<string, string>, code?: number): void;
         constructor(statusCode: number, message: string, previous?: Error, headers?: Record<string, string>, code?: number);
 

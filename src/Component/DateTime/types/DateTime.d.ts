@@ -15,12 +15,12 @@ declare namespace Jymfony.Component.DateTime {
         /**
          * Constructor.
          */
-        constructor(datetime?: undefined|string|number|Date, timezone?: undefined|string|DateTimeZone);
+        constructor(datetime?: undefined | string | number | Date, timezone?: undefined | string | DateTimeZone);
 
         /**
          * Parse a string into a new DateTime object according to the specified format
          */
-        static createFromFormat(format: string, time: string, timezone?: undefined|string|DateTimeZone): DateTime;
+        static createFromFormat(format: string, time: string, timezone?: undefined | string | DateTimeZone): DateTime;
 
         /**
          * Gets a new DateTime representing the current datetime.

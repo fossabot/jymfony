@@ -4,7 +4,7 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
     /**
      * This class provides a fluent interface for defining a node.
      */
-    export class VariableNodeDefinition extends NodeDefinition {
+    export class VariableNodeDefinition<T extends NodeDefinition = any> extends NodeDefinition<T> {
         /**
          * Instantiate a Node.
          */

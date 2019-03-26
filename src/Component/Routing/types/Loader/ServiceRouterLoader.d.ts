@@ -9,8 +9,8 @@ declare namespace Jymfony.Component.Routing.Loader {
         /**
          * Constructor.
          */
+        // @ts-ignore
         __construct(container: ContainerInterface): void;
-
         constructor(container: ContainerInterface);
 
         /**

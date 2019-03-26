@@ -17,24 +17,24 @@ declare namespace Jymfony.Component.Console.Question.Builder {
         /**
          * Adds a choice to the builder.
          */
-        addChoice(choice: string | Choice, value?: any): ChoiceQuestionBuilder;
+        addChoice(choice: string | Choice, value?: any): this;
 
         /**
          * Sets the choices of the builder.
          */
-        setChoices(choices: Choice[]): ChoiceQuestionBuilder;
+        setChoices(choices: Choice[]): this;
 
         /**
          * Sets the default choice.
          */
         // @ts-ignore
-        setDefault(defaultChoice: any): ChoiceQuestionBuilder;
+        setDefault(defaultChoice: any): this;
 
         /**
          * Sets the choice question mode.
          * Should be one of the ChoiceQuestion.MODE_* constants.
          */
-        setMode(mode: string): ChoiceQuestionBuilder;
+        setMode(mode: string): this;
 
         /**
          * Sets if this choice question allows multiple choices.
@@ -43,7 +43,7 @@ declare namespace Jymfony.Component.Console.Question.Builder {
          *
          * @returns {Jymfony.Component.Console.Question.Builder.ChoiceQuestionBuilder}
          */
-        setMultiple(multiple: boolean): ChoiceQuestionBuilder;
+        setMultiple(multiple: boolean): this;
 
         // @ts-ignore
         build(): ChoiceQuestion;

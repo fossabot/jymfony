@@ -28,24 +28,24 @@ declare namespace Jymfony.Component.Cache {
         /**
          * @inheritdoc
          */
-        set(value: T): CacheItem<T>;
+        set(value: T): this;
 
         /**
          * @inheritdoc
          */
-        expiresAt(expiration: null|undefined|DateTime): CacheItem<T>;
+        expiresAt(expiration: null|undefined|DateTime): this;
 
         /**
          * @inheritdoc
          */
-        expiresAfter(time: null|undefined|TimeSpan|number): CacheItem<T>;
+        expiresAfter(time: null|undefined|TimeSpan|number): this;
 
         /**
          * Adds a tag to a cache item.
          *
          * @throws {Jymfony.Component.Cache.Exception.InvalidArgumentException} When tag is not valid
          */
-        tag(tags: string|string[]): CacheItem<T>;
+        tag(tags: string|string[]): this;
 
         /**
          * Throws exception if key is invalid.

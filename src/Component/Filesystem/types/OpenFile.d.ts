@@ -48,12 +48,12 @@ declare namespace Jymfony.Component.Filesystem {
         /**
          * Creates a readable stream object.
          */
-        createReadableStream(): Promise<ReadableStream>;
+        createReadableStream(): Promise<NodeJS.ReadableStream>;
 
         /**
          * Creates a writable stream object.
          */
-        createWritableStream(): Promise<WritableStream>;
+        createWritableStream(): Promise<NodeJS.WritableStream>;
 
         /**
          * Asserts that the file is still open.

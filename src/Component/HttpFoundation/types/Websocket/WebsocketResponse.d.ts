@@ -19,6 +19,7 @@ declare namespace Jymfony.Component.HttpFoundation.Websocket {
         /**
          * Constructor.
          */
+        // @ts-ignore
         __construct(websocket: Websocket, headers?: Record<string, string | string[]>): void;
         constructor(websocket: Websocket, headers?: Record<string, string | string[]>);
 
@@ -30,12 +31,12 @@ declare namespace Jymfony.Component.HttpFoundation.Websocket {
         /**
          * @inheritdoc
          */
-        prepare(request: Request): WebsocketResponse;
+        prepare(request: Request): Promise<this>;
 
         /**
          * @inheritdoc
          */
-        sendResponse(req: any, res: any): void;
+        sendResponse(req: any, res: any): Promise<void>;
 
         /**
          * Closes the websocket connection.

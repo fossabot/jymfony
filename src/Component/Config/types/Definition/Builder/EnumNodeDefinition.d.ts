@@ -6,20 +6,19 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
      *
      * @memberOf Jymfony.Component.Config.Definition.Builder
      */
-    export class EnumNodeDefinition extends ScalarNodeDefinition {
+    export class EnumNodeDefinition<T extends NodeDefinition = any> extends ScalarNodeDefinition<T> {
         private _values: any[];
 
         /**
          * Constructor.
          */
-        __construct(name: string, parent?: NodeParentInterface): void;
-
-        constructor(name: string, parent?: NodeParentInterface);
+        __construct(name: string, parent?: T): void;
+        constructor(name: string, parent?: T);
 
         /**
          * Sets allowed values for this node.
          */
-        values(values: any[]): EnumNodeDefinition;
+        values(values: any[]): this;
 
         /**
          * @inheritdoc

@@ -1,6 +1,6 @@
 declare namespace Jymfony.Bundle.FrameworkBundle.DependencyInjection {
     import ContainerBuilder = Jymfony.Component.DependencyInjection.ContainerBuilder;
-    import Extension = Jymfony.Component.DependencyInjection.Extension;
+    import Extension = Jymfony.Component.DependencyInjection.Extension.Extension;
     import ConfigurationInterface = Jymfony.Component.Config.Definition.ConfigurationInterface;
     import LoaderInterface = Jymfony.Component.Config.Loader.LoaderInterface;
 
@@ -18,7 +18,7 @@ declare namespace Jymfony.Bundle.FrameworkBundle.DependencyInjection {
         /**
          * Returns the extension configuration object.
          */
-        getConfiguration(container: ContainerBuilder): ConfigurationInterface;
+        getConfiguration(config: any[], container: ContainerBuilder): ConfigurationInterface;
 
         private _registerSessionConfiguration(config: any, container: ContainerBuilder, loader: LoaderInterface): void;
 

@@ -14,7 +14,7 @@ declare namespace Jymfony.Component.DependencyInjection {
         /**
          * Sets if this Alias is public.
          */
-        setPublic(public_: boolean): Alias;
+        setPublic(public_: boolean): this;
 
         /**
          * Returns the Id of this alias.

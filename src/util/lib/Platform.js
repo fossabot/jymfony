@@ -31,6 +31,29 @@ class Platform {
     }
 
     /**
+     * Checks if this node version has async function support.
+     *
+     * @returns {boolean}
+     */
+    static hasAsyncGeneratorFunctionSupport() {
+        if (undefined === _asyncSupport) {
+            _asyncSupport = false;
+
+            try {
+                let fn;
+                eval('fn = async function * () { }');
+                _asyncSupport = 'AsyncGeneratorFunction' === (fn.constructor.name || fn.constructor.displayName);
+            } catch (e) {
+                if (!(e instanceof SyntaxError)) {
+                    throw e;
+                }
+            }
+        }
+
+        return _asyncSupport;
+    }
+
+    /**
      * Are we running on windows?
      *
      * @returns {boolean}

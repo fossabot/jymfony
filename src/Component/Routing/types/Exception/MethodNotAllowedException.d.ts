@@ -9,6 +9,7 @@ declare namespace Jymfony.Component.Routing.Exception {
         /**
          * Constructor.
          */
+        // @ts-ignore
         __construct(allowedMethods: string[], message?: string, code?: number | null, previous?: Error): void;
         constructor(allowedMethods: string[], message?: string, code?: number | null, previous?: Error);
 

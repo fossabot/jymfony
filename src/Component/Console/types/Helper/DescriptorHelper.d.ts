@@ -25,6 +25,6 @@ declare namespace Jymfony.Component.Console.Helper {
         /**
          * Registers a descriptor.
          */
-        register(format: string, descriptor: DescriptorInterface): DescriptorHelper;
+        register(format: string, descriptor: DescriptorInterface): this;
     }
 }

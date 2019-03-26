@@ -4,7 +4,7 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
     /**
      * This class provides a fluent interface for defining a integer node.
      */
-    export class FloatNodeDefinition extends NumericNodeDefinition {
+    export class FloatNodeDefinition<T extends NodeDefinition = any> extends NumericNodeDefinition<T> {
         /**
          * @inheritdoc
          */

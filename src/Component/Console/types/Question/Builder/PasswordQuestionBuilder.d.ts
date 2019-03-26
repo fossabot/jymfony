@@ -21,12 +21,12 @@ declare namespace Jymfony.Component.Console.Question.Builder {
         /**
          * Sets whether the input will be hidden or masked.
          */
-        setHidden(hidden: boolean): PasswordQuestionBuilder;
+        setHidden(hidden: boolean): this;
 
         /**
          * Sets the mask character when the input is not hidden.
          */
-        setMask(mask: string): PasswordQuestionBuilder;
+        setMask(mask: string): this;
 
         build(): PasswordQuestion;
     }

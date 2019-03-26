@@ -30,7 +30,7 @@ declare namespace Jymfony.Component.Console.Command {
         /**
          * Gets/sets an array of argument and option instances.
          */
-        public definition: InputDefinition|(InputArgument|InputOption)[];
+        public definition: InputDefinition | (InputArgument | InputOption)[];
 
         /**
          * The description for the command.
@@ -136,7 +136,7 @@ declare namespace Jymfony.Component.Console.Command {
          *
          * @throws {Jymfony.Component.Console.Exception.LogicException.LogicException} When this abstract method is not implemented
          */
-        execute(input: InputInterface, output: OutputInterface): Promise<void>|Promise<number>|Promise<void|number>|number|void;
+        execute(input: InputInterface, output: OutputInterface): Promise<void> | Promise<number> | Promise<void | number> | number | void;
 
         /**
          * Interacts with the user.
@@ -145,7 +145,7 @@ declare namespace Jymfony.Component.Console.Command {
          * This means that this is the only place where the command can
          * interactively ask for values of missing required arguments.
          */
-        interact(input: InputInterface, output: OutputInterface): Promise<void>|void;
+        interact(input: InputInterface, output: OutputInterface): Promise<void> | void;
 
         /**
          * Initializes the command just after the input has been validated.
@@ -153,7 +153,7 @@ declare namespace Jymfony.Component.Console.Command {
          * This is mainly useful when a lot of commands extends one main command
          * where some things need to be initialized based on the input arguments and options.
          */
-        interact(input: InputInterface, output: OutputInterface): Promise<void>|void;
+        interact(input: InputInterface, output: OutputInterface): Promise<void> | void;
 
         /**
          * Runs the command.
@@ -186,7 +186,7 @@ declare namespace Jymfony.Component.Console.Command {
          *
          * @returns The current instance
          */
-        addArgument(name: string, mode?: number, description?: string, defaultValue?: any): Command;
+        addArgument(name: string, mode?: number, description?: string, defaultValue?: any): this;
 
         /**
          * Adds an option.
@@ -199,7 +199,7 @@ declare namespace Jymfony.Component.Console.Command {
          *
          * @returns The current instance
          */
-        addOption(name: string, shortcut?: string|undefined, mode?: number, description?: string, defaultValue?: any): Command;
+        addOption(name: string, shortcut?: string|undefined, mode?: number, description?: string, defaultValue?: any): this;
 
         /**
          * Returns the synopsis for the command.
@@ -213,7 +213,7 @@ declare namespace Jymfony.Component.Console.Command {
          *
          * @param usage The usage, it'll be prefixed with the command name
          */
-        addUsage(usage: string): Command;
+        addUsage(usage: string): this;
 
         /**
          * Validates a command name.

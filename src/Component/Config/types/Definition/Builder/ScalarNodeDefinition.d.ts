@@ -4,7 +4,7 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
     /**
      * This class provides a fluent interface for defining a node.
      */
-    export class ScalarNodeDefinition extends VariableNodeDefinition {
+    export class ScalarNodeDefinition<T extends NodeDefinition = any> extends VariableNodeDefinition<T> {
         /**
          * @inheritdoc
          */

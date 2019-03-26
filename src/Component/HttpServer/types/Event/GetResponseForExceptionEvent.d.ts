@@ -9,6 +9,7 @@ declare namespace Jymfony.Component.HttpServer.Event {
         /**
          * Constructor.
          */
+        // @ts-ignore
         __construct(server: HttpServer, request: Request, e: Error): void;
         constructor(server: HttpServer, request: Request, e: Error);
 

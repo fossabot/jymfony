@@ -6,11 +6,8 @@ declare namespace Jymfony.Component.Console.Output {
 
         /**
          * Constructor.
-         *
-         * @param {string} [verbosity = Jymfony.Component.Console.Output.ConsoleOutputInterface.VERBOSITY_NORMAL]
-         * @param {boolean} [decorated]
-         * @param {Jymfony.Component.Console.Output.OutputFormatterInterface} [formatter]
          */
+        // @ts-ignore
         __construct(verbosity?: number, decorated?: boolean, formatter?: OutputFormatterInterface): void;
         constructor(verbosity?: number, decorated?: boolean, formatter?: OutputFormatterInterface);
     }

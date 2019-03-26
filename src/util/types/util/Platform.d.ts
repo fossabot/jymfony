@@ -6,6 +6,11 @@ declare namespace __jymfony {
         static hasAsyncFunctionSupport(): boolean;
 
         /**
+         * Checks if this node version has async generator function support.
+         */
+        static hasAsyncGeneratorFunctionSupport(): boolean;
+
+        /**
          * Are we running on windows?
          */
         static isWindows(): boolean;

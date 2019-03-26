@@ -66,7 +66,7 @@ declare namespace Jymfony.Component.Routing {
         /**
          * @inheritdoc
          */
-        warmUp(cacheDir: string): boolean;
+        warmUp(cacheDir: string): Promise<void>;
 
         /**
          * Provides the ConfigCache factory implementation, falling back to a

@@ -63,12 +63,12 @@ declare namespace Jymfony.Component.Filesystem.StreamWrapper {
         /**
          * @inheritdoc
          */
-        createReadableStream(resource: any): ReadableStream;
+        createReadableStream(resource: any): NodeJS.ReadableStream;
 
         /**
          * @inheritdoc
          */
-        createWritableStream(resource: any): WritableStream;
+        createWritableStream(resource: any): NodeJS.WritableStream;
 
         /**
          * @inheritdoc

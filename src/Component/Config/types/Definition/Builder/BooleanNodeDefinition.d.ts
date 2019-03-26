@@ -4,12 +4,12 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
     /**
      * This class provides a fluent interface for defining a node.
      */
-    export class BooleanNodeDefinition extends ScalarNodeDefinition {
+    export class BooleanNodeDefinition<T extends NodeDefinition = any> extends ScalarNodeDefinition<T> {
         /**
          * Constructor.
          */
-        __construct(name: string, parent?: NodeParentInterface): void;
-        constructor(name: string, parent?: NodeParentInterface);
+        __construct(name: string, parent?: T): void;
+        constructor(name: string, parent?: T);
 
         /**
          * @inheritdoc
@@ -21,6 +21,6 @@ declare namespace Jymfony.Component.Config.Definition.Builder {
          *
          * @throws {Jymfony.Component.Config.Definition.Exception.InvalidDefinitionException}
          */
-        cannotBeEmpty(): NodeDefinition;
+        cannotBeEmpty(): this;
     }
 }

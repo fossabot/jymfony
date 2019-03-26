@@ -6,8 +6,8 @@ declare namespace Jymfony.Component.DependencyInjection {
         /**
          * Constructor.
          */
-        __construct(parent: string|symbol|Function): void;
-        constructor(parent: string|symbol|Function);
+        __construct(parent: string | symbol | Function): void;
+        constructor(parent: string | symbol | Function);
 
         /**
          * Gets the extended definition.
@@ -17,7 +17,7 @@ declare namespace Jymfony.Component.DependencyInjection {
         /**
          * @inheritdoc
          */
-        setArguments(args: any[]): ChildDefinition;
+        setArguments(args: any[]): this;
 
         /**
          * @inheritdoc
@@ -32,6 +32,6 @@ declare namespace Jymfony.Component.DependencyInjection {
         /**
          * @inheritdoc
          */
-        replaceArgument(index: number, argument: any): ChildDefinition;
+        replaceArgument(index: number, argument: any): this;
     }
 }

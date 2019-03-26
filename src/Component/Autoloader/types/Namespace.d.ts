@@ -15,7 +15,7 @@ declare namespace Jymfony.Component.Autoloader {
         /**
          * Add a base directory to search classes in
          */
-        addDirectory(directory: string): Namespace;
+        addDirectory(directory: string): this;
 
         /**
          * Get the namespace FQN

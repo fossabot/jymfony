@@ -1,5 +1,4 @@
 declare namespace Jymfony.Component.DependencyInjection.Extension {
-    import ConfigurationInterface = Jymfony.Component.Config.Definition.ConfigurationInterface;
     import ContainerBuilder = Jymfony.Component.DependencyInjection.ContainerBuilder;
 
     export class ExtensionInterface implements MixinInterface {
@@ -24,10 +23,5 @@ declare namespace Jymfony.Component.DependencyInjection.Extension {
          * Loads a configuration.
          */
         load(configs: any[], container: ContainerBuilder): void;
-
-        /**
-         * Returns the extension configuration object.
-         */
-        getConfiguration(): ConfigurationInterface;
     }
 }
