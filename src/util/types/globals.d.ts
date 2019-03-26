@@ -13,6 +13,195 @@ declare namespace __jymfony {
          */
         __construct(...args: any[]);
     }
+
+    /**
+     * Executes a callback iterating asynchronously onto the given iterator.
+     */
+    export function forAwait(iterator: Iterable<any> | AsyncIterable<any>, callback: Invokable | Function | GeneratorFunction): Promise<any>;
+
+    /**
+     * Stops execution for the given number of ms.
+     * The returned promised resolves after the time has passed.
+     */
+    export function sleep(ms: number): Promise<void>;
+
+    /**
+     * Emits a deprecation warning message.
+     */
+    export function trigger_deprecated(message: string): void;
+
+    /**
+     * Sync-recursively creates directories.
+     */
+    export function mkdir(dir: string, mode?: number): void;
+
+    /**
+     * Creates a function that delays invoking a function after
+     * a given time has elapsed, de-duplicating calls.
+     */
+    export function debounce(func: Invokable|Function|GeneratorFunction, wait: number): Function;
+
+    /**
+     * Gets a method given an object and the method name.
+     */
+    export function getFunction(object: Object, funcName: string): Function;
+
+    /**
+     * Clones an object.
+     */
+    export function clone(object: Object): Object;
+
+    /**
+     * Recursively clones an object and all its arrays/literal objects.
+     */
+    export function deepClone(object: Object): Object;
+
+    /**
+     * Recursively merges literal objects/arrays.
+     */
+    export function deepMerge(...args: (any[]|Record<any, any>)[]): any|Object;
+
+    /**
+     * Calculate object difference by keys.
+     */
+    export function diffKey(arr1: any[]|Record<any, any>, ...arrs: (any[]|Record<any, any>)[]): Object;
+
+    /**
+     * Get key, value pairs from any object.
+     */
+    export function getEntries<V>(object: V[]): IterableIterator<[number, V]>;
+    export function getEntries<K extends keyof string | number | symbol, V>(object: Record<K, V>): IterableIterator<[K, V]>;
+
+    /**
+     * Deep-equality check.
+     */
+    export function equal(left: any, right: any, strict?: boolean): boolean;
+
+    /**
+     * Returns an object with the common keys only.
+     */
+    export function intersect_key(obj: any[]|Record<any, any>, ...arrays: (any[]|Record<any, any>)[]): Record<any, any>;
+
+    /**
+     * Merges arrays or objects.
+     */
+    export function objectMerge(...args: any[]): any;
+
+    /**
+     * Converts a key-value object to a Map object.
+     */
+    export function obj2map(obj: Record<any, any>): Map<any, any>;
+
+    /**
+     * Converts a Map object to a key-value object.
+     */
+    export function map2obj(obj: Map<any, any>): Record<any, any>;
+
+    /**
+     * Serializes any value to a string.
+     */
+    export function serialize(value: any): string;
+
+    /**
+     * Unserializes values from a serialized string.
+     */
+    export function unserialize(serialized: string): any;
+
+    /**
+     * Escapes a regex pattern.
+     */
+    export function regex_quote(str: string): string;
+
+    /**
+     * Calculates a CRC32 of a string.
+     */
+    export function crc32(stringOrBuffer: string|Buffer): number;
+
+    /**
+     * Escapes a shell argument.
+     */
+    export function escapeshellarg(arg: string): string;
+
+    /**
+     * Calculates the levenshtein distance between two strings.
+     */
+    export function levenshtein(s: string, t: string): number;
+
+    /**
+     * @internal
+     */
+    export function internal_parse_query_string(params: any): any;
+
+    /**
+     * Parses a query string and returns a kv object.
+     */
+    export function parse_query_string(str: string): Record<string, any>;
+
+    /**
+     * Formats values into a string.
+     */
+    export function sprintf(format: string, ...args: any[]): string;
+
+    /**
+     * The strcspn() function returns the number of characters (including whitespaces)
+     * found in a string before any part of the specified characters are found.
+     */
+    export function strcspn(str: string, mask: string, start?: number, length?: number): number;
+
+    /**
+     * Strips HTML tags from a string.
+     */
+    export function strip_tags(input: string, allowed?: string): string;
+
+    /**
+     * Replaces parts of strings.
+     */
+    export function strtr(str: string, replacePairs: Record<string, string>): string;
+
+    /**
+     * Replace text within a portion of a string.
+     */
+    export function substr_replace(search: string, replacement: string, start: number, length?: number): string;
+    export function substr_replace(search: string[], replacement: string[], start: number[], length?: number[]): string[];
+
+    /**
+     * Trim characters at the end of a string.
+     */
+    export function rtrim(str: string, charList?: string): string;
+
+    /**
+     * Trim characters at the beginning of a string.
+     */
+    export function ltrim(str: string, charList?: string): string;
+
+    /**
+     * Trim characters at the beginning and at the end of a string.
+     */
+    export function trim(str: string, charList?: string): string;
+
+    /**
+     * Make the first character upper-case and the rest lower-case.
+     */
+    export function ucfirst(str: string): string;
+
+    /**
+     * Make the first character of each word upper-case and the rest lower-case.
+     */
+    export function ucwords(str: string): string;
+
+    /**
+     * If operator parameter is undefined returns -1 if version1 is
+     * lower than version2, 0 if they are equal, 1 if the second is lower
+     *
+     * Otherwise returns true if the relationship is the one specified
+     * by the operator, false otherwise
+     */
+    export function version_compare(version1: string|number, version2: string|number, operator?: string|undefined): boolean|number;
+
+    /**
+     * Wraps a string to a given number of characters.
+     */
+    export function wordwrap(str: string, width?: number, strBreak?: string, cut?: boolean): string;
 }
 
 declare interface Newable<T> {
@@ -88,7 +277,6 @@ declare module NodeJS {
         (interface0: Newable<I0>, interface1: Newable<I1>, interface2: Newable<I2>, interface3: Newable<I3>, interface4: Newable<I4>, interface5: I5, interface6: Newable<I6>):
             Newable<__jymfony.JObject & I0 & I1 & I2 & I3 & I4 & I5 & I6>;
         implementationOf(...interfacesAndTraits: any[]): Newable<__jymfony.JObject & any>;
-
 
         isArguments(value: any): value is IArguments;
         isBoolean(value: any): value is boolean;
